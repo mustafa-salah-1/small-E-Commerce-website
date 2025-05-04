@@ -1,0 +1,239 @@
+
+body {
+  background-color: #0e0f11;
+  color: #d4f1c5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+v
+.btn-outline-light {
+  border-color: #00ff88;
+  color: #00ff88;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background-color: #00ff88;
+  color: #000;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+.form-control {
+  background-color: #101314;
+  border: 1px solid #00ff88;
+  color: #00ff88;
+}
+
+.form-control::placeholder {
+  color: #88ffaa;
+}
+
+.form-control:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+}
+
+/* Game Page Specific Styles */
+.game-hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+              url('../img/k.avif');
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+  border-bottom: 3px solid #00ff88;
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+}
+
+.platform-badge {
+  background: linear-gradient(45deg, #00ff88, #00aaff);
+  color: #000;
+  font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.section-heading {
+  color: #00ff88;
+  font-family: 'Orbitron', sans-serif;
+  border-bottom: 2px solid #00ff88;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.edition-card {
+  background: #161a1d;
+  border: 1px solid #00ff88;
+  border-radius: 5px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.edition-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+  border-color: #00ff88;
+}
+
+.edition-card.selected {
+  background: #1e2529;
+  border: 2px solid #00ff88;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+.btn-buy {
+  background: linear-gradient(45deg, #00ff88, #00aaff);
+  color: #000;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-buy:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
+}
+
+.game-feature-icon {
+  color: #00ff88;
+  font-size: 2rem;
+  margin-right: 15px;
+}
+
+.specs-grid {
+background: #161a1d;
+border: 1px solid #00ff88;
+border-radius: 5px;
+padding: 20px;
+
+}
+
+.spec-item {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.spec-item:last-child {
+  border-bottom: none;
+}
+
+.spec-name {
+  color: #00ff88;
+  font-weight: bold;
+}
+
+.spec-value {
+  color: #d4f1c5;
+}
+
+.purchase-box {
+  background: #161a1d;
+  border: 1px solid #00ff88;
+  border-radius: 5px;
+  padding: 25px;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+}
+
+.game-code {
+  background: #000;
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.bonus-content {
+  background: #000;
+  border: 1px solid #00ff88;
+  border-radius: 5px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.dlc-card {
+  background: #161a1d;
+  border: 1px solid #00ff88;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.dlc-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 255, 136, 0.4);
+}
+
+.dlc-img {
+  height: 150px;
+  object-fit: cover;
+  border-bottom: 1px solid #00ff88;
+}
+
+.social-icons {
+  font-size: 1.5rem;
+}
+
+.social-icon {
+  color: #d4f1c5;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.social-icon:hover {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+  transform: translateY(-3px);
+}
+
+footer {
+background-color: #1b1f23;
+padding: 20px;
+text-align: center;
+color: #00ff88;
+margin-top: 50px;
+}
+
+* {
+  will-change: transform, opacity;
+}
+
+.social-icons {
+font-size: 1.5rem;
+}
+
+.social-icon {
+color: #d4f1c5;
+transition: all 0.3s ease;
+text-decoration: none;
+}
+
+.social-icon:hover {
+color: #00ff88;
+text-shadow: 0 0 10px #00ff88;
+transform: translateY(-3px);
+}

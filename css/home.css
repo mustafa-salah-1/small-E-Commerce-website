@@ -1,0 +1,194 @@
+body {
+  background-color: #0e0f11;
+  color: #d4f1c5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar specific styles with Orbitron font */
+.navbar-brand,
+.nav-link,
+.navbar-toggler,
+.btn-outline-light {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background-color: #0c0f0a;
+  border-bottom: 3px solid #00ff88;
+  padding: 1rem 2rem;
+  box-shadow: 0 0 15px #00ff88;
+}
+
+.navbar-brand {
+  color: #00ff88 !important;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: #aaffdd !important;
+}
+
+.nav-link {
+  color: #00ff88 !important;
+  font-weight: 500;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #c3ffe6 !important;
+  text-shadow: 0 0 5px #00ff88;
+}
+
+.navbar-toggler {
+  border: none;
+  background-color: #00ff88;
+  border-radius: 5px;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 255, 136, 0.9)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+
+
+.form-control {
+  background-color: #101314;
+  border: 1px solid #00ff88;
+  color: #00ff88;
+}
+
+.form-control::placeholder {
+  color: #88ffaa;
+}
+
+.form-control:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+} 
+
+.card {
+  background-color: #161a1d;
+  border: 1px solid #00ff88;
+  color: #d4f1c5;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  height: 100%;
+}
+.card .card-body {
+  display: flex;
+  flex-direction: column; 
+}
+
+.col img { 
+  height: 250px;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px #00ff88;
+}
+
+footer {
+  background-color: #1b1f23;
+  padding: 20px;
+  text-align: center;
+  color: #00ff88;
+  margin-top: 50px;
+}
+
+.btn-primary {
+  background-color: #00ff88;
+  border-color: #00ff88;
+  color: #000;
+}
+
+.btn-primary:hover {
+  background-color: #00e676;
+}
+
+.hero {
+  background: url('https://images.unsplash.com/photo-1606312619349-05b9d7b4c7c3') no-repeat center center/cover;
+  padding: 100px 20px;
+  color: white;
+  text-shadow: 2px 2px #000;
+}
+
+.form-control:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.section-heading {
+  border-bottom: 2px solid #00ff88;
+  padding-bottom: 10px;
+}
+
+.carousel {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.carousel img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.price-tag {
+  color: #00ff88;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 21px;
+  padding: 3px 8px;
+  border: 1px solid #00ff88;
+  border-radius: 3px;
+  text-shadow: 0 0 3px rgba(0, 255, 136, 0.3);
+  background-color: rgba(0, 255, 136, 0.05);
+  margin-left: auto;
+  /* This pushes it to the right */
+}
+
+.social-icons {
+  font-size: 1.5rem;
+}
+
+.social-icon {
+  color: #d4f1c5;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+  transform: translateY(-3px);
+}
+
+
+.btn-outline-light{
+  color: #00ff88;
+  border-color: #00ff88;
+}                                                 /* search*/
+.btn-outline-light:hover {
+  background-color: #00ff88;
+  color: #000;
+
+}
+
+see-all-btn.btn-outline-light {
+  color: #00ff88;
+  border-color: #00ff88;
+}
+
+.see-all-btn.btn-outline-light:hover {
+  background-color: #00ff88;                          /*see all*/
+  color: #000;
+}
+.see-all-btn i {
+  margin-left: 5px;
+}

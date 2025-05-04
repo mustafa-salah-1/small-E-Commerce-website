@@ -1,0 +1,619 @@
+
+:root {
+    --neon-green: #00ff88;
+    --neon-green-light: #aaffdd;
+    --neon-green-dark: #00e676;
+    --dark-bg: #0e0f11;
+    --darker-bg: #0c0f0a;
+    --card-bg: #161a1d;
+    --text-primary: #d4f1c5;
+    --text-secondary: #88ffaa;
+    --accent-purple: #9d00ff;
+    --accent-blue: #00a2ff;
+    --glow: 0 0 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.social-icon {
+    color: #c5eff1;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    
+  }
+  
+  .social-icon:hover {
+    color: #00ff88;
+    text-shadow: 0 0 10px #00ff88;
+    transform: translateY(-3px);
+  }
+  footer {
+    background-color: #1b1f23;
+    padding: 20px;
+    text-align: center;
+    color: #00ff88;
+    margin-top: 50px;
+  }
+
+body {
+    background-color: #0e0f11;
+    color: #d4f1c5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Navbar specific styles with Orbitron font */
+  .navbar-brand,
+  .nav-link,
+  .navbar-toggler,
+  .btn-outline-light {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .navbar {
+    position: sticky;
+top: 0;
+    z-index: 1030;
+    background-color: #0c0f0a;
+    border-bottom: 3px solid #00ff88;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 15px #00ff88;
+  }
+
+  .navbar-brand {
+    color: #00ff88 !important;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+  }
+
+  .navbar-brand:hover {
+    color: #aaffdd !important;
+  }
+
+  .nav-link {
+    color: #00ff88 !important;
+    font-weight: 500;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #c3ffe6 !important;
+    text-shadow: 0 0 5px #00ff88;
+  }
+
+  .navbar-toggler {
+    border: none;
+    background-color: #00ff88;
+    border-radius: 5px;
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 255, 136, 0.9)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+
+  .btn-outline-light {
+    border-color: #00ff88;
+    color: #00ff88;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-light:hover {
+    background-color: #00ff88;
+    color: #000;
+    box-shadow: 0 0 10px #00ff88;
+  }
+
+  .form-control {
+    background-color: #101314;
+    border: 1px solid #00ff88;
+    color: #00ff88;
+  }
+
+  .form-control::placeholder {
+    color: #88ffaa;
+  }
+
+  .form-control:focus {
+    border-color: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+  }
+
+
+
+
+/* Cyberpunk Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darker-bg);
+    border-left: 1px solid var(--neon-green);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neon-green);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-green-light);
+}
+
+a{
+    text-decoration: none;
+}
+
+/* Back Button */
+.back-btn {
+   margin-left:4rem;
+    display: inline-flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: var(--neon-green);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.back-btn:hover {
+    background: rgba(0, 255, 157, 0.1);
+    transform: translateX(-5px);
+}
+
+.back-btn i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+
+/* Featured Games Section */
+.section {
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: var(--neon-green);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-green), transparent);
+}
+
+.view-all {
+    color: var(--neon-green);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.view-all:hover {
+    color: var(--neon-green-light);
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+/* Game Grid */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.game-card {
+    height: 28rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--neon-green);
+    box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+}
+
+.game-badge {
+    position: absolute;
+    top: 25rem;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
+
+}
+
+.ps-badge {
+    background: linear-gradient(90deg, #006FCD, #003791);
+    border-left: 2px solid white;
+}
+
+.xbox-badge {
+    margin-left: 120px;
+    background: linear-gradient(90deg, #107C10, #0e470e);
+    border-left: 2px solid white;
+}
+
+.pc-badge {
+    margin-left: 60px;
+    background: linear-gradient(90deg, #E72929, #8a0f0f);
+    border-left: 2px solid white;
+}
+
+.game-media {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.game-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.game-card:hover .game-img {
+    transform: scale(1.05);
+}
+
+.game-discount {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--accent-purple);
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(157, 0, 255, 0.5);
+}
+
+.game-content {
+    padding: 1.5rem;
+}
+
+.game-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.game-info {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.game-genre, .game-developer {
+    background: rgba(0, 255, 136, 0.1);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.game-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.stars {
+    color: #ffc107;
+}
+
+.rating-value {
+    font-weight: bold;
+}
+
+.game-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.current-price {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    color: var(--neon-green);
+    font-weight: bold;
+}
+
+.add-to-cart {
+    background: var(--neon-green);
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.add-to-cart:hover {
+    background: var(--neon-green-light);
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+/* Platform Filter */
+.platform-filter {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: rgba(0, 255, 136, 0.1);
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--neon-green);
+    color: black;
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+/* Featured Banner */
+.featured-banner {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 162, 255, 0.1));
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.featured-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.featured-content {
+    flex: 1;
+}
+
+.featured-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: var(--neon-green);
+    margin-bottom: 1rem;
+}
+
+.featured-text {
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+}
+
+.featured-btn {
+    background: var(--neon-green);
+    color: black;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.featured-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--neon-green);
+}
+
+.featured-image {
+    flex: 1;
+    max-width: 400px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.featured-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Newsletter */
+.newsletter {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(157, 0, 255, 0.05));
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 10px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.newsletter-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.8rem;
+    color: var(--neon-green);
+    margin-bottom: 1rem;
+}
+
+.newsletter-text {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--neon-green);
+    border-radius: 5px 0 0 5px;
+    background: rgba(16, 19, 20, 0.7);
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.newsletter-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--neon-green);
+}
+
+.newsletter-btn {
+    background: var(--neon-green);
+    color: black;
+    border: none;
+    padding: 0 1.5rem;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-btn:hover {
+    background: var(--neon-green-light);
+}
+
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .featured-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .featured-content {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .newsletter-input, .newsletter-btn {
+        border-radius: 5px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.hi{
+    color:rgb(104, 104, 104);
+}

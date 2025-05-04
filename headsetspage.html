@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Headsets Page</title>
+    <link rel="icon" href="../img/logo.png" type="image/png">
+      <!-- Add this line -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link  rel="stylesheet" href="../css/headsetspage.css" rel="stylesheet">
+<link  rel="stylesheet" href="../css/headsetspage.css" rel="stylesheet">
+<!-- font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+<!-- style -->
+<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/headsetspage.css" rel="stylesheet">
+<!-- icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid px-2">
+      <a class="navbar-brand fs-4" href="home.html">
+        <img src="../img/ll.png" alt="GameStore Logo" height="30" 
+        class="d-inline-block me-2">GAME<span style="color: #00aaff">STORE</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- Existing nav items -->
+          <li class="nav-item">
+            <a class="nav-link" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="games.html">Games</a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Products
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+              <li><a class="dropdown-item active" href="headsetspage.html">Headsets</a></li>
+              <li><a class="dropdown-item">Mouse</a></li>
+              <li><a class="dropdown-item">Keyboards</a></li>
+              <li><a class="dropdown-item active" href="games.html">Games</a></li>
+              <li><a class="dropdown-item">Chairs</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="discount.html">Discount</a>
+          </li>
+        </ul>
+  
+        <!-- Search Form -->
+        <form class="d-flex me-3" role="search" onsubmit="return searchRedirect(event)">
+          <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+         </form>
+  
+             <!-- Profile Icon as Link -->
+  <div class="nav-item">
+    <a class="nav-link d-flex align-items-center" href="profile.html">
+      <i class="fas fa-user-circle fa-2x me-2"></i>
+    </a>
+  </div>
+  
+      </div>
+    </div>
+  </nav>
+
+
+    <!-- Main Content -->
+    <main>
+        <!-- Featured Banner -->
+        <section class="section">
+            <div class="featured-banner">
+                <div class="featured-content">
+                    <h2 class="featured-title">Game Store Headsets</h2>
+                    <p class="featured-text">this page for headsets and show properties and spesific for headsets and all name and companys .</p>
+                    <button class="featured-btn">Welcome</button>
+                </div>
+                <div class="featured-image">
+                    <img src="../img/54.jpg" alt="Cyberpunk 2077">
+                </div>
+            </div>
+        </section>
+
+  <!-- Back Button -->
+  <a class="back-btn" onclick="history.back()" href="home.php">
+            <i class="bi bi-arrow-left" ></i> BACK TO PRODUCTS
+        </a>
+
+
+        <!-- Top Sellers Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">TOP SELLERS</h2>
+
+            </div>
+            
+            <div class="platform-filter">
+                <button class="filter-btn active">HeadSets</button>
+                <button class="filter-btn">Stronges</button>
+                <button class="filter-btn">Powers</button>
+                <button class="filter-btn">RGB</button>
+            </div>
+            
+            <div class="game-grid">
+                <!-- Game 1 -->
+                <div class="game-card">
+                <div class="game-badge ps-badge">PS5</div>
+                <div class="game-badge pc-badge">PC</div>
+                    <div class="game-media">
+                        <img src="../img/50.jpg" alt="The Last of Us Part II" class="game-img">
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Razer K7</h3>
+                        <div class="game-info">
+                            <span class="game-genre">Black</span>
+                            <span class="game-developer">Gaming</span>
+                        </div>
+                        <div class="game-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-value">4.8</span>
+                        </div>
+                        <div class="game-footer">
+                            <div class="price-container">
+                                <span class="original-price">$69.99</span>
+                                <span class="current-price">$49.99</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-cart-plus"></i> ADD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 2 -->
+                <div class="game-card">
+                <div class="game-badge ps-badge">PS5</div>
+                    <div class="game-badge pc-badge">PC</div>
+                    <div class="game-discount">-30%</div>
+                    <div class="game-media">
+                        <img src="../img/51.jpg" alt="God of War Ragnarök" class="game-img">
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Logitech 45S</h3>
+                        <div class="game-info">
+                            <span class="game-genre">RPG</span>
+                            <span class="game-developer">Gaming</span>
+                        </div>
+                        <div class="game-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-value">5.0</span>
+                        </div>
+                        <div class="game-footer">
+                            <div class="price-container">
+                                <span class="original-price">$69.99</span>
+                                <span class="current-price">$48.99</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-cart-plus"></i> ADD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 3 -->
+                <div class="game-card">
+                <div class="game-badge ps-badge">PS5</div>
+                <div class="game-badge xbox-badge">XBOX</div>
+                    <div class="game-media">
+                        <img src="../img/52.jpg" alt="Horizon Forbidden West" class="game-img">
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">HyperX 37M</h3>
+                        <div class="game-info">
+                            <span class="game-genre">RGB</span>
+                            <span class="game-developer">Black</span>
+                        </div>
+                        <div class="game-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-value">4.2</span>
+                        </div>
+                        <div class="game-footer">
+                            <div class="price-container">
+                                <span class="current-price">$54.99</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-cart-plus"></i> ADD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 4 -->
+                <div class="game-card">
+                    <div class="game-discount">-25%</div>
+                    <div class="game-media">
+                        <img src="../img/54.jpg" alt="Elden Ring" class="game-img">
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Razer K97</h3>
+                        <div class="game-info">
+                            <span class="game-genre">Gaming</span>
+                            <span class="game-developer">RGB</span>
+                        </div>
+                        <div class="game-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-value">5.0</span>
+                        </div>
+                        <div class="game-footer">
+                            <div class="price-container">
+                                <span class="original-price">$59.99</span>
+                                <span class="current-price">$44.99</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-cart-plus"></i> ADD
+                            </button>                
+
+                        </div>
+                    </div>    <div class="game-badge ps-badge">PS5</div>
+    <div class="game-badge xbox-badge">XBOX</div>
+    <div class="game-badge pc-badge">PC</div>
+                </div>
+                
+                <!-- Game 5 -->
+                <div class="game-card">
+                    <div class="game-badge ps-badge">PS5</div>
+                    <div class="game-badge pc-badge">PC</div>
+                    <div class="game-media">
+                        <img src="../img/55.jpg" alt="Assassin's Creed Valhalla" class="game-img">
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Logitech</h3>
+                        <div class="game-info">
+                            <span class="game-genre">Gaming</span>
+                            <span class="game-developer">Black</span>
+                        </div>
+                        <div class="game-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-value">4.1</span>
+                        </div>
+                        <div class="game-footer">
+                            <div class="price-container">
+                                <span class="current-price">$39.99</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-cart-plus"></i> ADD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 6 -->
+                <div class="game-card">
+                    <div class="game-badge ps-badge">PS5</div>
+                    <div class="game-badge pc-badge">PC</div>
+                    <div class="game-discount">-40%</div>
+                    <div class="game-media">
+                        <img src="../img/56.jpg" alt="Cyberpunk 2077" class="game-img">
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Cyberpunk W14</h3>
+                        <div class="game-info">
+                            <span class="game-genre">RPG</span>
+                            <span class="game-developer">White</span>
+                        </div>
+                        <div class="game-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-value">3.7</span>
+                        </div>
+                        <div class="game-footer">
+                            <div class="price-container">
+                                <span class="original-price">$59.99</span>
+                                <span class="current-price">$35.99</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-cart-plus"></i> ADD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 7 -->
+                <div class="game-card">
+                    <div class="game-badge ps-badge">PS5</div>
+                    <div class="game-badge xbox-badge">XBOX</div>
+                    <div class="game-media">
+                        <img src="../img/57.webp" alt="Call of Duty" class="game-img">
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Razer P90</h3>
+                        <div class="game-info">
+                            <span class="game-genre">Gaming</span>
+                            <span class="game-developer">Pink</span>
+                        </div>
+                        <div class="game-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-value">4.0</span>
+                        </div>
+                        <div class="game-footer">
+                            <div class="price-container">
+                                <span class="current-price">$69.99</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-cart-plus"></i> ADD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Game 8 -->
+                <div class="game-card">
+                    <div class="game-badge ps-badge">PS5</div>
+                    <div class="game-badge pc-badge">PC</div>
+                    <div class="game-media">
+                        <img src="../img/59.jpg" alt="FIFA 23" class="game-img">
+                    </div>
+                    <div class="game-content">
+                        <h3 class="game-title">Razer X23</h3>
+                        <div class="game-info">
+                            <span class="game-genre">Gaming</span>
+                            <span class="game-developer">Silver</span>
+                        </div>
+                        <div class="game-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="rating-value">3.8</span>
+                        </div>
+                        <div class="game-footer">
+                            <div class="price-container">
+                                <span class="current-price">$59.99</span>
+                            </div>
+                            <button class="add-to-cart">
+                                <i class="fas fa-cart-plus"></i> ADD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+        <!-- footer -->
+<footer class="py-4">
+    <div class="container text-center">
+      <!-- Social Media Icons -->
+      <div class="social-icons mb-3">
+        <p class="hi"> Created By Mohamed</p>
+      </div>
+  
+      <p>&copy; 2025 Game Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  
+        <script>  function searchRedirect(event) {         /* search : game , headset , discount pages */
+            event.preventDefault(); // Stop the default form submission
+            const query = document.getElementById("searchInput").value.trim().toLowerCase();
+          
+            if (query === "games" || query === "game") {
+              window.location.href = "games.html";
+            } 
+            
+            if (query === "discount" || query === "discounts") {
+              window.location.href = "discount.html";
+            } 
+            if (query === "headset" || query === "headsets") {
+              window.location.href = "headsetspage.html"; 
+            } 
+          }
+            
+            
+            </script>
+          
+          
+        </body>
+        </html>
+

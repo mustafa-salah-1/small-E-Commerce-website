@@ -1,0 +1,171 @@
+
+body {
+  background-color: #0e0f11;
+  color: #d4f1c5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar specific styles with Orbitron font */
+.navbar-brand,
+.nav-link,
+.navbar-toggler,
+.btn-outline-light {
+font-family: 'Orbitron', sans-serif;
+}
+
+.navbar {
+position: sticky;
+top: 0;
+z-index: 1030;
+background-color: #0c0f0a;
+border-bottom: 3px solid #00ff88;
+padding: 1rem 2rem;
+box-shadow: 0 0 15px #00ff88;
+}
+
+.navbar-brand {
+color: #00ff88 !important;
+font-size: 1.8rem;
+font-weight: bold;
+letter-spacing: 1px;
+transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+color: #aaffdd !important;
+}
+
+.nav-link {
+color: #00ff88 !important;
+font-weight: 500;
+margin-right: 1rem;
+transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+color: #c3ffe6 !important;
+text-shadow: 0 0 5px #00ff88;
+}
+
+.navbar-toggler {
+border: none;
+background-color: #00ff88;
+border-radius: 5px;
+}
+
+.navbar-toggler-icon {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 255, 136, 0.9)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+
+
+.form-control {
+background-color: #101314;
+border: 1px solid #00ff88;
+color: #00ff88;
+}
+
+.form-control::placeholder {
+color: #88ffaa;
+}
+
+.form-control:focus {
+border-color: #00ff88;
+box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+}
+
+.profile-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+.profile-card {
+  background: rgba(22, 26, 29, 0.9);
+  border: 1px solid #00ff88;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.profile-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #00ff88;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+.btn-neon {
+  background-color: transparent;
+  color: #00ff88;
+  border: 2px solid #00ff88;
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.btn-neon:hover {
+  background-color: #00ff88;
+  color: #000;
+  box-shadow: 0 0 15px #00ff88;
+}
+
+.info-title {
+  font-family: 'Orbitron', sans-serif;
+  border-bottom: 2px solid #00ff88;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.social-icon {
+  font-size: 1.5rem;
+  color: #00ff88;
+  margin-right: 15px;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #aaffdd;
+  transform: scale(1.2);
+}
+
+.icon-btn i {
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .text-md-end {
+    text-align: center !important;
+  }
+}
+
+.btn-outline-light{
+color: #00ff88;
+border-color: #00ff88;
+}                                                 /* search*/
+.btn-outline-light:hover {
+background-color: #00ff88;
+color: #000;
+
+}
+.social-icon {
+color: #d4f1c5;
+transition: all 0.3s ease;
+text-decoration: none;
+}
+
+.social-icon:hover {
+color: #00ff88;
+text-shadow: 0 0 10px #00ff88;
+transform: translateY(-3px);
+}
+footer {
+background-color: #1b1f23;
+padding: 20px;
+text-align: center;
+color: #00ff88;
+margin-top: 50px;
+}
+

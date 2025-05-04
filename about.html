@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Page</title>
+  <link rel="icon" href="../img/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link  rel="stylesheet" href="../css/about.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link  rel="stylesheet" href="../css/about.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link  rel="stylesheet" href="../css/about.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/about.css">
+<!-- font -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+<!-- style -->
+<link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/about.css" rel="stylesheet">
+<!-- icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <!-- icon -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-2">
+    <a class="navbar-brand fs-4" href="home.html">
+      <img src="../img/ll.png" alt="GameStore Logo" height="30" 
+      class="d-inline-block me-2">GAME<span style="color: #00aaff">STORE</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Existing nav items -->
+        <li class="nav-item">
+          <a class="nav-link" href="home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="games.html">Games</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+            <li><a class="dropdown-item active" href="headsetspage.html">Headsets</a></li>
+            <li><a class="dropdown-item">Mouse</a></li>
+            <li><a class="dropdown-item">Keyboards</a></li>
+            <li><a class="dropdown-item active" href="games.html">Games</a></li>
+            <li><a class="dropdown-item">Chairs</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="discount.html">Discount</a>
+        </li>
+      </ul>
+
+      <!-- Search Form -->
+      <form class="d-flex me-3" role="search" onsubmit="return searchRedirect(event)">
+        <input id="searchInput" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+       </form>
+
+           <!-- Profile Icon as Link -->
+<div class="nav-item">
+  <a class="nav-link d-flex align-items-center" href="profile.html">
+    <i class="fas fa-user-circle fa-2x me-2"></i>
+  </a>
+</div>
+
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <div class="container">
+      <h1 class="display-3" style="font-family: 'Orbitron', sans-serif; text-shadow: 0 0 10px #00ff88;">ABOUT K-Gaming</h1>
+      <p class="lead">Powered by gamers, for gamers</p>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="container py-5">
+    <h2 class="text-center section-heading">OUR STORY</h2>
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <p class="lead">Founded in 2023 by a team of passionate gamers, K-Gaming started as a small Discord community and grew into the premier destination for elite gaming gear.</p>
+        <p>We've revolutionized the gaming equipment industry by combining cutting-edge technology with community-driven design. Every product in our store is tested and approved by our team of professional gamers.</p>
+        <button class="btn btn-neon mt-3">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="container py-5">
+    <h2 class="text-center section-heading">WHY CHOOSE US</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">⚡</div>
+          <h3>Pro-Tested Gear</h3>
+          <p>All products are tested by esports professionals to ensure tournament-grade performance.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">🔧</div>
+          <h3>Custom Mods</h3>
+          <p>Exclusive access to custom modifications you won't find anywhere else.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-box">
+          <div class="feature-icon">🎮</div>
+          <h3>Community Driven</h3>
+          <p>Our products are selected based on feedback from thousands of gamers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+<!-- footer -->
+<footer class="py-4">
+  <div class="container text-center">
+    <!-- Social Media Icons -->
+    <div class="social-icons mb-3">
+      <a href="https://www.instagram.com/erbil_polytechnic_university?igsh=MXZyM3R5MmR3ZHI4Zg==" target="_blank" class="social-icon me-3">
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      <a href="https://www.facebook.com/share/15z8EEPEdF/?mibextid=wwXIfr" target="_blank" class="social-icon">
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+    </div>
+
+    <p>&copy; 2025 Game Store. All rights reserved.</p>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <script>  function searchRedirect(event) {         /* search : game , headset , discount pages */
+    event.preventDefault(); // Stop the default form submission
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+  
+    if (query === "games" || query === "game") {
+      window.location.href = "games.html";
+    } 
+    
+    if (query === "discount" || query === "discounts") {
+      window.location.href = "discount.html";
+    } 
+    if (query === "headset" || query === "headsets") {
+      window.location.href = "headsetspage.html"; 
+    } 
+  }
+    
+    
+    </script>
+  
+  
+</body>
+</html>

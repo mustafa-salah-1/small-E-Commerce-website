@@ -1,0 +1,162 @@
+
+:root {
+    --neon-green: #00ff88;
+    --dark-bg: #0e0f11;
+    --light-text: #d4f1c5;
+    --card-bg: #161a1d;
+}
+
+body {
+background-color: #0e0f11;
+color: #d4f1c5;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar specific styles with Orbitron font */
+.navbar-brand,
+.nav-link,
+.navbar-toggler,
+.btn-outline-light {
+font-family: 'Orbitron', sans-serif;
+}
+
+.navbar {
+position: sticky;
+top: 0;
+z-index: 1030;
+background-color: #0c0f0a;
+border-bottom: 3px solid #00ff88;
+padding: 1rem 2rem;
+box-shadow: 0 0 15px #00ff88;
+}
+
+.navbar-brand {
+color: #00ff88 !important;
+font-size: 1.8rem;
+font-weight: bold;
+letter-spacing: 1px;
+transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+color: #aaffdd !important;
+}
+
+.nav-link {
+color: #00ff88 !important;
+font-weight: 500;
+margin-right: 1rem;
+transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+color: #c3ffe6 !important;
+text-shadow: 0 0 5px #00ff88;
+}
+
+.navbar-toggler {
+border: none;
+background-color: #00ff88;
+border-radius: 5px;
+}
+
+.navbar-toggler-icon {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 255, 136, 0.9)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.btn-outline-light {
+border-color: #00ff88;
+color: #00ff88;
+transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+background-color: #00ff88;
+color: #000;
+box-shadow: 0 0 10px #00ff88;
+}
+
+.form-control {
+background-color: #101314;
+border: 1px solid #00ff88;
+color: #00ff88;
+}
+
+.form-control::placeholder {
+color: #88ffaa;
+}
+
+.form-control:focus {
+border-color: #00ff88;
+box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+}
+
+
+/* Contact Page Specific Styles */
+.contact-hero {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                url('https://images.unsplash.com/photo-1517430816045-df4b7de11d1d') center/cover;
+    height: 300px;
+    border-bottom: 3px solid var(--neon-green);
+    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+}
+
+.contact-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--neon-green);
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.4);
+}
+
+.contact-icon {
+    color: var(--neon-green);
+    font-size: 2.5rem;
+}
+
+.section-heading {
+    border-bottom: 2px solid var(--neon-green);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.form-control {
+background-color: #101314;
+border: 1px solid #00ff88;
+color: #00ff88;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+}
+
+.btn-neon {
+    background: transparent;
+    color: var(--neon-green);
+    border: 2px solid var(--neon-green);
+    font-family: 'Orbitron', sans-serif;
+}
+
+.btn-neon:hover {
+    background: var(--neon-green);
+    color: #000;
+    box-shadow: 0 0 15px var(--neon-green);
+}
+
+.social-icon {
+    color: var(--neon-green);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #aaffdd;
+    transform: scale(1.2);
+    text-shadow: 0 0 15px var(--neon-green);
+}
+
+.map-container {
+    border: 2px solid var(--neon-green);
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}

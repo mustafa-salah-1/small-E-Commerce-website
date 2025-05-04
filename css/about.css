@@ -1,0 +1,196 @@
+
+    body {
+      background-color: #0e0f11;
+      color: #d4f1c5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    /* Navbar styles same as homepage */
+    .navbar-brand, .nav-link, .navbar-toggler, .btn-outline-light {
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+
+    /* Navbar specific styles with Orbitron font */
+    .navbar-brand,
+    .nav-link,
+    .navbar-toggler,
+    .btn-outline-light {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .navbar {
+      position: sticky;
+  top: 0;
+  z-index: 1030;
+      background-color: #0c0f0a;
+      border-bottom: 3px solid #00ff88;
+      padding: 1rem 2rem;
+      box-shadow: 0 0 15px #00ff88;
+    }
+
+    .navbar-brand {
+      color: #00ff88 !important;
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      color: #aaffdd !important;
+    }
+
+    .nav-link {
+      color: #00ff88 !important;
+      font-weight: 500;
+      margin-right: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #c3ffe6 !important;
+      text-shadow: 0 0 5px #00ff88;
+    }
+
+    .navbar-toggler {
+      border: none;
+      background-color: #00ff88;
+      border-radius: 5px;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 255, 136, 0.9)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .btn-outline-light {
+      border-color: #00ff88;
+      color: #00ff88;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-light:hover {
+      background-color: #00ff88;
+      color: #000;
+      box-shadow: 0 0 10px #00ff88;
+    }
+
+    .form-control {
+      background-color: #101314;
+      border: 1px solid #00ff88;
+      color: #00ff88;
+    }
+
+    .form-control::placeholder {
+      color: #88ffaa;
+    }
+
+    .form-control:focus {
+      border-color: #00ff88;
+      box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+    }
+    
+    .section-heading {
+      border-bottom: 2px solid #00ff88;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .about-hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                  url('https://images.unsplash.com/photo-1542751371-adc38448a05e') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 50px;
+      border-bottom: 3px solid #00ff88;
+      box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
+    }
+    
+    .feature-box {
+      background-color: #161a1d;
+      border: 1px solid #00ff88;
+      border-radius: 5px;
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #00ff88;
+      margin-bottom: 20px;
+    }
+    
+    .team-card {
+      background-color: #161a1d;
+      border: 1px solid #00ff88;
+      border-radius: 5px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .team-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    }
+    
+    .team-img {
+      height: 200px;
+      object-fit: cover;
+    }
+    
+
+    
+    .btn-neon {
+      background-color: transparent;
+      color: #00ff88;
+      border: 2px solid #00ff88;
+      padding: 10px 25px;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-neon:hover {
+      background-color: #00ff88;
+      color: #000;
+      box-shadow: 0 0 15px #00ff88;
+    }
+
+
+    * {
+  will-change: transform, opacity;
+}
+
+
+.social-icons {
+    font-size: 1.5rem;
+  }
+  
+  .social-icon {
+    color: #d4f1c5;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .social-icon:hover {
+    color: #00ff88;
+    text-shadow: 0 0 10px #00ff88;
+    transform: translateY(-3px);
+  }
+  footer {
+    background-color: #1b1f23;
+    padding: 20px;
+    text-align: center;
+    color: #00ff88;
+    margin-top: 50px;
+  }
