@@ -13,28 +13,28 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!-- Existing nav items -->
                 <li class="nav-item">
-                    <a class="nav-link" href="home.html">Home</a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="games.html">Games</a>
+                    <a class="nav-link" href="games.php">Games</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
+                    <a class="nav-link" href="about.php">About</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Products
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="productsDropdown">
-                        <li><a class="dropdown-item active" href="headsetspage.html">Headsets</a></li>
+                        <li><a class="dropdown-item active" href="headsetspage.php">Headsets</a></li>
                         <li><a class="dropdown-item">Mouse</a></li>
                         <li><a class="dropdown-item">Keyboards</a></li>
-                        <li><a class="dropdown-item active" href="games.html">Games</a></li>
+                        <li><a class="dropdown-item active" href="games.php">Games</a></li>
                         <li><a class="dropdown-item">Chairs</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="discount.html">Discount</a>
+                    <a class="nav-link" href="discount.php">Discount</a>
                 </li>
             </ul>
 
@@ -45,7 +45,7 @@
 
             <!-- Profile Icon as Link -->
             <div class="nav-item">
-                <a class="nav-link d-flex align-items-center" href="profile.html">
+                <a class="nav-link d-flex align-items-center" href="profile.php">
                     <i class="fas fa-user-circle fa-2x me-2"></i>
                 </a>
             </div>

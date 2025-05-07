@@ -1,3 +1,11 @@
+ <!-- About Section -->
+ <section id="about" class="container py-5">
+     <h2 class="text-center mb-4 section-heading">About Game Store</h2>
+     <p class="text-center">Game Store is the premier destination for elite gamers seeking the latest and greatest gear.
+         From headsets and keyboards to exclusive merchandise, we supply the best to fuel your passion. Our team is made of
+         dedicated gamers who know what you want and deliver it fast.</p>
+ </section>
+
  <!-- footer -->
  <footer class="py-4">
      <div class="container text-center">

@@ -13,6 +13,7 @@
   <!-- style -->
   <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/<?php echo $file_css ?>" rel="stylesheet">
+  <link rel="stylesheet" href="css/navigation.css">
 </head>
 
 <body>

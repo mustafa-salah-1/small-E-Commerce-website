@@ -4,58 +4,6 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Navbar specific styles with Orbitron font */
-.navbar-brand,
-.nav-link,
-.navbar-toggler,
-.btn-outline-light {
-  font-family: 'Orbitron', sans-serif;
-}
-
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1030;
-  background-color: #0c0f0a;
-  border-bottom: 3px solid #00ff88;
-  padding: 1rem 2rem;
-  box-shadow: 0 0 15px #00ff88;
-}
-
-.navbar-brand {
-  color: #00ff88 !important;
-  font-size: 1.8rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
-}
-
-.navbar-brand:hover {
-  color: #aaffdd !important;
-}
-
-.nav-link {
-  color: #00ff88 !important;
-  font-weight: 500;
-  margin-right: 1rem;
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #c3ffe6 !important;
-  text-shadow: 0 0 5px #00ff88;
-}
-
-.navbar-toggler {
-  border: none;
-  background-color: #00ff88;
-  border-radius: 5px;
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 255, 136, 0.9)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
 
 
 .form-control {

@@ -3,11 +3,7 @@ body {
   background-image:url(../img/bgg.webp);
   color: #d4f1c5;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
+   margin: 0; 
 }
 
 .login-container {
