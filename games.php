@@ -7,8 +7,6 @@ $file_css = "home.css";
 include 'components/app.php';
 
 ?>
- 
-
 
 
 <!-- Hero Section -->
@@ -20,9 +18,6 @@ include 'components/app.php';
         <p class="lead">Experience the ultimate in gaming excellence</p>
     </div>
 </section>
-
- 
-
 
 <!-- Console Filter Section -->
 <section class="py-5">
@@ -51,7 +46,6 @@ include 'components/app.php';
         </div>
     </div>
 </section>
-
 
 <!-- Game Cards (with data attributes) -->
 <div class="d1">
@@ -383,7 +377,6 @@ include 'components/app.php';
     </a>
     <br>
     <div class="green-line mx-auto" style="width: 10%; height: 3px; background:rgb(0, 255, 17); margin-top: 30px;"></div>
-</div> <br><br>
+</div>
 
- 
-<?php include 'components/footer.php'; ?> 
+<?php include 'components/footer.php'; ?>

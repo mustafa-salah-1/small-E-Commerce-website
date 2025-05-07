@@ -4,8 +4,7 @@ $title_page = "Game Store Page";
 $file_css = "home.css";
 
 include 'components/app.php'; ?>
- 
- 
+  
   <!-- <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -27,9 +26,7 @@ include 'components/app.php'; ?>
       <span class="visually-hidden">Next</span>
     </button>
   </div> -->
- 
- 
-
+   
   <div class="d2" id="d2">
     <!-- Cards Section -->
     <section id="products" class="container-xl py-5">
@@ -152,6 +149,5 @@ include 'components/app.php'; ?>
       </div>
     </section>
   </div>
-   
-
+    
  <?php include 'components/footer.php'; ?> 
