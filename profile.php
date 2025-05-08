@@ -3,7 +3,7 @@
 $title_page = "Game Store Page";
 $file_css = "profile.css";
 
-include '../components/app.php'; ?>
+include 'components/app.php'; ?>
   
 <!-- Profile -->
 <div class="profile-container">
@@ -40,4 +40,4 @@ include '../components/app.php'; ?>
   </div>
 </div>
 
-<?php include '../components/footer.php'; ?>
+<?php include 'components/footer.php'; ?>

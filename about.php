@@ -4,7 +4,7 @@
 $title_page = "About Us";
 $file_css = "about.css";
 
-include "../components/app.php"; ?>
+include "components/app.php"; ?>
  
  
 <!-- Hero Section -->
@@ -57,4 +57,4 @@ include "../components/app.php"; ?>
 
 
 
-<?php include '../components/footer.php'; ?> 
+<?php include 'components/footer.php'; ?> 

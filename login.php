@@ -3,7 +3,7 @@
 $title_page = "Game Store Page";
 $file_css = "login.css";
 
-include "../components/app.php"; ?>
+include "components/app.php"; ?>
 
 
 <div class="container d-flex py-5 justify-content-center align-items-center">
@@ -31,4 +31,4 @@ include "../components/app.php"; ?>
   </div>
 </div>
 
-<?php include '../components/footer.php'; ?> 
+<?php include 'components/footer.php'; ?> 

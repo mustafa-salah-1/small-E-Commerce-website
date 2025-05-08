@@ -3,7 +3,7 @@
 $title_page = "Game Store Page";
 $file_css = "home.css";
 
-include '../components/app.php'; ?>
+include 'components/app.php'; ?>
   
   <!-- <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -150,4 +150,4 @@ include '../components/app.php'; ?>
     </section>
   </div>
     
- <?php include '../components/footer.php'; ?> 
+ <?php include 'components/footer.php'; ?> 
