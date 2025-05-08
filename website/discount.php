@@ -3,7 +3,7 @@
 $title_page = "Game Store Page";
 $file_css = "discount.css";
 
-include 'components/app.php'; ?>
+include '../components/app.php'; ?>
 
 <!-- Grid Overlay -->
 <div class="grid-overlay"></div>
@@ -303,4 +303,4 @@ include 'components/app.php'; ?>
     </div>
 </section>
  
-<?php include 'components/footer.php'; ?> 
+<?php include '../components/footer.php'; ?> 

@@ -3,7 +3,7 @@
 $title_page = "About Us";
 $file_css = "account.css";
 
-include "components/app.php"; ?>
+include "../components/app.php"; ?>
  
 <div class="container">
   <div class="signup-container">
@@ -29,4 +29,4 @@ include "components/app.php"; ?>
   </div>
 </div> 
 
-<?php include 'components/footer.php'; ?>
+<?php include '../components/footer.php'; ?>

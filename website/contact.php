@@ -3,7 +3,7 @@
 $title_page = "About Us";
 $file_css = "contact.css";
 
-include "components/app.php"; ?>
+include "../components/app.php"; ?>
    
   <!-- Hero Section -->
   <section class="contact-hero d-flex align-items-center justify-content-center">
@@ -105,4 +105,4 @@ include "components/app.php"; ?>
     </div>
   </section>
   
-  <?php include 'components/footer.php'; ?>
+  <?php include '../components/footer.php'; ?>
