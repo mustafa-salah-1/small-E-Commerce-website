@@ -17,17 +17,22 @@ function getAllProductCount()
 function getAllProducts()
 {
     global $connect;
+     
+    if (!$connect) {
+        echo  "Database connection not established";
+        return false;
+    }
+    
     try {
         $sql = "SELECT * FROM products";
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        error_log("Error getting all products: " . $e->getMessage());
+        echo "Error getting all products: " . $e->getMessage() ;
         return false;
     }
 }
-
 function getProductById($productId)
 {
     global $connect;
@@ -39,6 +44,21 @@ function getProductById($productId)
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         error_log("Error getting product by ID: " . $e->getMessage());
+        return false;
+    }
+}
+
+function deleteProductById($productId) 
+{
+    global $connect;
+    try {
+        $sql = "DELETE FROM products WHERE id = :product_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        error_log("Error deleting product by ID: " . $e->getMessage());
         return false;
     }
 }
