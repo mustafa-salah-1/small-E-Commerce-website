@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php echo $title_page ?></title>
-  <link rel="icon" href="public/img/logo.png" type="image/png">
+  <link rel="icon" href="../public/img/logo.png" type="image/png">
   <!-- font -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
   <!-- icon -->
@@ -16,3 +16,20 @@
 </head>
 
 <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-5">
+    <a class="navbar-brand" href="dashboard.php">GameStore Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse   justify-content-end" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <span class="nav-link">Welcome, <?php echo htmlspecialchars($_SESSION["username"]); ?></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
