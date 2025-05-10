@@ -33,6 +33,7 @@ function getAllProducts()
         return false;
     }
 }
+
 function getProductById($productId)
 {
     global $connect;
@@ -52,6 +53,24 @@ function deleteProductById($productId)
 {
     global $connect;
     try {
+        // First get the product image filename
+        $sql = "SELECT product_image FROM products WHERE id = :product_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
+        $stmt->execute();
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($product && !empty($product['product_image'])) {
+            // Define the path to the product image
+            $imagePath = '../public/product-images/main/' . $product['product_image'];
+
+            // Delete the image file if it exists
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+        
+        // Now delete the product from the database
         $sql = "DELETE FROM products WHERE id = :product_id";
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
@@ -59,6 +78,28 @@ function deleteProductById($productId)
         return true;
     } catch (PDOException $e) {
         error_log("Error deleting product by ID: " . $e->getMessage());
+        return false;
+    }
+}
+
+function addProduct($productName, $productPrice, $productPriceSell, $categoryId, $brandId, $productImage, $quantity, $content)
+{
+    global $connect;
+    try {
+        $sql = "INSERT INTO products (product_name, product_price, product_price_sell, category_id, brand_id, product_image, product_quantity, product_content) 
+                VALUES (:name, :price, :price_sell, :category_id, :brand_id, :image, :quantity, :content)";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':name', $productName);
+        $stmt->bindParam(':price', $productPrice);
+        $stmt->bindParam(':price_sell', $productPriceSell);
+        $stmt->bindParam(':category_id', $categoryId);
+        $stmt->bindParam(':brand_id', $brandId);
+        $stmt->bindParam(':image', $productImage);
+        $stmt->bindParam(':quantity', $quantity);
+        $stmt->bindParam(':content', $content);
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        error_log("Error adding product: " . $e->getMessage());
         return false;
     }
 }
