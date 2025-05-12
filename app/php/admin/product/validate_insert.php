@@ -70,3 +70,4 @@ if ($product_image['error'] != 0) {
         $errors[] = "Image size should be less than 2MB";
     }
 }
+ 
