@@ -26,7 +26,7 @@ if (isset($_POST['add_product'])) {
         $target_file = $target_dir . $filename;
 
         if (move_uploaded_file($product_image["tmp_name"], $target_file)) {
-            addProduct($product_name, $product_price, $product_price_sell, $product_quantity, $brand_id, $category_id, $product_content, $filename);
+            addProduct($product_name, $product_price, $product_price_sell, $category_id, $brand_id, $filename, $product_quantity, $product_content);
             $_SESSION['success'] = "Product added successfully!";
         } else {
             $_SESSION['error'] = "Failed to upload image";
@@ -86,9 +86,9 @@ if (isset($_POST['add_product'])) {
                             <tr>
                                 <td><?php echo $product['id']; ?></td>
                                 <td>
-                                    <img src="../uploads/<?php echo $product['product_image']; ?>"
+                                    <img src="../public/product-images/main/<?php echo $product['product_image']; ?>"
                                         alt="<?php echo $product['product_name']; ?>"
-                                        style="width: 50px; height: 50px; object-fit: cover;">
+                                        style="width: 60px; object-fit: contain;">
                                 </td>
                                 <td><?php echo $product['product_name']; ?></td>
                                 <td><?php echo $product['product_quantity']; ?></td>
