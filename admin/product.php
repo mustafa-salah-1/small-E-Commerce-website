@@ -9,12 +9,6 @@ if (isset($_POST['delete_product'])) {
     deleteProductById($_POST['product_id']);
 }
 
-$products = getAllProducts();
-
-$title_page = "Products";
-include "../components/admin/app.php";
-
-
 if (isset($_POST['add_product'])) {
     $errors = [];
 
@@ -35,6 +29,12 @@ if (isset($_POST['add_product'])) {
         $_SESSION['error'] = implode("<br>", $errors);
     }
 }
+$products = getAllProducts();
+
+$title_page = "Products";
+include "../components/admin/app.php";
+
+
 
 ?>
 
@@ -76,7 +76,7 @@ if (isset($_POST['add_product'])) {
                             <th>Image</th>
                             <th>Name</th>
                             <th>Quantity</th>
-                            <th>Price</th>
+                            <th>Category</th>
                             <th>Price Sell</th>
                             <th>Actions</th>
                         </tr>
@@ -92,7 +92,7 @@ if (isset($_POST['add_product'])) {
                                 </td>
                                 <td><?php echo $product['product_name']; ?></td>
                                 <td><?php echo $product['product_quantity']; ?></td>
-                                <td>IQD <?php echo number_format($product['product_price'], 2); ?></td>
+                                <td><?php echo $product['category_name']; ?></td>
                                 <td>IQD <?php echo number_format($product['product_price_sell'], 2); ?></td>
                                 <td>
                                     <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" style="display: inline;">

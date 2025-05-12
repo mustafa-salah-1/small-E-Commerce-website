@@ -24,7 +24,11 @@ function getAllProducts()
     }
     
     try {
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT p.*, c.category_name, b.brand_name 
+            FROM products p
+            LEFT JOIN categories c ON p.category_id = c.id
+            LEFT JOIN brands b ON p.brand_id = b.id";
+
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
