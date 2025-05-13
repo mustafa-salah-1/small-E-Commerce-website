@@ -17,7 +17,7 @@ if (isset($_POST['add_brand'])) {
     if (empty($errors)) {
         $brand_name = $_POST['brand_name'];
         $filename = null;
-        
+
         // Handle image upload if provided
         if (!empty($_FILES['brand_image']['name'])) {
             $filename = time() . '_' . basename($_FILES["brand_image"]["name"]);
@@ -41,7 +41,7 @@ if (isset($_POST['add_brand'])) {
 
 if (isset($_POST['update_brand'])) {
     $errors = [];
-    
+
     if (empty($_POST['brand_name'])) {
         $errors[] = "Brand name is required";
     }
@@ -58,7 +58,7 @@ if (isset($_POST['update_brand'])) {
             if ($current_image && file_exists("../public/brands/" . $current_image)) {
                 unlink("../public/brands/" . $current_image);
             }
-            
+
             $filename = time() . '_' . basename($_FILES['update_brand_image']['name']);
             $target_dir = "../public/brands/";
             $target_file = $target_dir . $filename;
@@ -99,13 +99,15 @@ include "../components/admin/app.php";
             <div class="mt-4">
                 <?php if (isset($_SESSION['success'])): ?>
                     <div class="alert alert-success">
-                        <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
+                        <?php echo $_SESSION['success'];
+                        unset($_SESSION['success']); ?>
                     </div>
                 <?php endif; ?>
 
                 <?php if (isset($_SESSION['error'])): ?>
                     <div class="alert alert-danger">
-                        <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+                        <?php echo $_SESSION['error'];
+                        unset($_SESSION['error']); ?>
                     </div>
                 <?php endif; ?>
             </div>
@@ -125,11 +127,11 @@ include "../components/admin/app.php";
                                 <td><?php echo $brand['id']; ?></td>
                                 <td>
                                     <?php if ($brand['brand_image']): ?>
-                                    <img src="../public/brands/<?php echo $brand['brand_image']; ?>"
-                                        alt="<?php echo $brand['brand_name']; ?>"
-                                        style="width: 60px; object-fit: contain;">
+                                        <img src="../public/brands/<?php echo $brand['brand_image']; ?>"
+                                            alt="<?php echo $brand['brand_name']; ?>"
+                                            style="width: 60px; object-fit: contain;">
                                     <?php else: ?>
-                                    <span>No image</span>
+                                        <span>No image</span>
                                     <?php endif; ?>
                                 </td>
                                 <td><?php echo $brand['brand_name']; ?></td>

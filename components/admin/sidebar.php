@@ -4,7 +4,7 @@
             <a class="nav-link active" href="dashboard.php">
                 <i class="fas fa-home"></i> Dashboard
             </a>
-        </li> 
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="customer.php">
                 <i class="fas fa-users"></i> Customers
@@ -23,6 +23,11 @@
         <li class="nav-item">
             <a class="nav-link" href="brand.php">
                 <i class="fas fa-tags"></i> Brands
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="category.php">
+                <i class="fas fa-tags"></i> Categories
             </a>
         </li>
     </ul>
