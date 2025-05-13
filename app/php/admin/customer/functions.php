@@ -29,13 +29,27 @@ function getAllCustomers() {
 function getCustomerById($customerId) {
     global $connect;
     try {
-        $sql = "SELECT * FROM customers WHERE customer_id = :customer_id";
+        $sql = "SELECT * FROM customers WHERE id = :customer_id";
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':customer_id', $customerId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         error_log("Error getting customer by ID: " . $e->getMessage());
+        return false;
+    }
+}
+
+function getCustomerOrders($customerId) {
+    global $connect;
+    try {
+        $sql = "SELECT * FROM invoices WHERE customer_id = :customer_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':customer_id', $customerId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error getting customer orders: " . $e->getMessage());
         return false;
     }
 }

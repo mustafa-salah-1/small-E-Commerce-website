@@ -6,8 +6,8 @@
             </a>
         </li> 
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                <i class="fas fa-users"></i> Users
+            <a class="nav-link" href="customer.php">
+                <i class="fas fa-users"></i> Customers
             </a>
         </li>
         <li class="nav-item">
