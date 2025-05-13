@@ -18,7 +18,9 @@ function getAllInvoices()
 {
     global $connect;
     try {
-        $sql = "SELECT * FROM invoices";
+        $sql = "SELECT invoices.*, customers.customer_name AS customer_name, 
+        customers.customer_email AS customer_email 
+        FROM invoices LEFT JOIN customers ON invoices.customer_id = customers.id";
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -43,7 +45,7 @@ function getInvoiceById($invoiceId)
     }
 }
 
-function getInvoicesByCustomerId($customerId) 
+function getInvoicesByCustomerId($customerId)
 {
     global $connect;
     try {
