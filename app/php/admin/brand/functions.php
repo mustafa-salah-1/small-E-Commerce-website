@@ -76,17 +76,14 @@ function deleteBrand($brandId)
 {
     global $connect;
     try {
-        // Get brand details first to retrieve the image filename
         $brand = getBrandById($brandId);
         if ($brand && !empty($brand['brand_image'])) {
-            // Delete the image file from the public folder
             $imagePath = '../public/brands/' . $brand['brand_image'];
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
         }
 
-        // Delete the brand from database
         $sql = "DELETE FROM brands WHERE id = :brand_id";
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':brand_id', $brandId, PDO::PARAM_INT);

@@ -55,12 +55,12 @@ if (isset($_POST['update_brand'])) {
         // Check if a new image was uploaded
         if (!empty($_FILES['update_brand_image']['name'])) {
             // Delete the old image file if it exists
-            if ($current_image && file_exists("../public/brand-images/" . $current_image)) {
-                unlink("../public/brand-images/" . $current_image);
+            if ($current_image && file_exists("../public/brands/" . $current_image)) {
+                unlink("../public/brands/" . $current_image);
             }
             
             $filename = time() . '_' . basename($_FILES['update_brand_image']['name']);
-            $target_dir = "../public/brand-images/";
+            $target_dir = "../public/brands/";
             $target_file = $target_dir . $filename;
 
             if (!move_uploaded_file($_FILES['update_brand_image']['tmp_name'], $target_file)) {
