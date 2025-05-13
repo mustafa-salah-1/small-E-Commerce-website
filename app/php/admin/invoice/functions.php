@@ -34,7 +34,10 @@ function getInvoiceById($invoiceId)
 {
     global $connect;
     try {
-        $sql = "SELECT * FROM invoices WHERE id = :invoice_id";
+        $sql = "SELECT invoices.*, customers.customer_name AS customer_name, 
+        customers.customer_email AS customer_email 
+        FROM invoices LEFT JOIN customers ON invoices.customer_id = customers.id 
+        WHERE invoices.id = :invoice_id";
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':invoice_id', $invoiceId, PDO::PARAM_INT);
         $stmt->execute();
