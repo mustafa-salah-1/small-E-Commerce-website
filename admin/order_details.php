@@ -2,6 +2,7 @@
 require "check.php";
 include "../app/php/config/config.php";
 include "../app/php/admin/invoice/functions.php";
+include "../app/php/admin/invoice_product/functions.php";
 
 $title_page = "Invoices";
 
@@ -9,10 +10,9 @@ $title_page = "Invoices";
 if (isset($_GET['id'])) {
     $invoice_id = $_GET['id'];
     $invoice = getInvoiceById($invoice_id);
-    $invoice_items = getInvoiceItems($invoice_id);
+    $invoice_items = getInvoiceProductsByInvoiceId($invoice_id);
     $page_mode = 'details';
 } else {
-    $invoice = null;
     $invoice_items = [];
     $page_mode = 'list';
 }
@@ -30,7 +30,7 @@ include "../components/admin/app.php";
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h2><?php echo $page_mode == 'details' ? 'Invoice Details' : 'Invoice Management'; ?></h2>
                 <?php if ($page_mode == 'details'): ?>
-                    <a href="invoices.php" class="btn btn-secondary">Back to Invoices</a>
+                    <a href="orders.php" class="btn btn-secondary">Back to Orders</a>
                 <?php endif; ?>
             </div>
 
@@ -61,11 +61,12 @@ include "../components/admin/app.php";
                             <div class="card-body">
                                 <p><strong>Invoice ID:</strong> <?php echo $invoice['id']; ?></p>
                                 <p><strong>Date:</strong> <?php echo date('F d, Y', strtotime($invoice['created_at'])); ?></p>
-                                <p><strong>Status:</strong> 
+                                <p><strong>Status:</strong>
                                     <span class="badge bg-<?php echo getInvoiceStatusClass($invoice['status']); ?>">
                                         <?php echo $invoice['status']; ?>
                                     </span>
                                 </p>
+                                <p><strong>Total quantity:</strong> <?php echo $invoice['quantity']; ?></p>
                                 <p><strong>Total Amount:</strong> $<?php echo number_format($invoice['total_price'], 2); ?></p>
                             </div>
                         </div>
@@ -98,7 +99,6 @@ include "../components/admin/app.php";
                                     <thead>
                                         <tr>
                                             <th>Item</th>
-                                            <th>Description</th>
                                             <th>Quantity</th>
                                             <th>Unit Price</th>
                                             <th>Total</th>
@@ -108,29 +108,12 @@ include "../components/admin/app.php";
                                         <?php foreach ($invoice_items as $item): ?>
                                             <tr>
                                                 <td><?php echo $item['product_name']; ?></td>
-                                                <td><?php echo $item['description']; ?></td>
                                                 <td><?php echo $item['quantity']; ?></td>
-                                                <td>$<?php echo number_format($item['unit_price'], 2); ?></td>
-                                                <td>$<?php echo number_format($item['quantity'] * $item['unit_price'], 2); ?></td>
+                                                <td>$<?php echo number_format($item['price'], 2); ?></td>
+                                                <td>$<?php echo number_format($item['quantity'] * $item['price'], 2); ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="4" class="text-end"><strong>Subtotal:</strong></td>
-                                            <td>$<?php echo number_format($invoice['subtotal'], 2); ?></td>
-                                        </tr>
-                                        <?php if (isset($invoice['tax_amount']) && $invoice['tax_amount'] > 0): ?>
-                                        <tr>
-                                            <td colspan="4" class="text-end"><strong>Tax:</strong></td>
-                                            <td>$<?php echo number_format($invoice['tax_amount'], 2); ?></td>
-                                        </tr>
-                                        <?php endif; ?>
-                                        <tr>
-                                            <td colspan="4" class="text-end"><strong>Total:</strong></td>
-                                            <td><strong>$<?php echo number_format($invoice['total_price'], 2); ?></strong></td>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         <?php else: ?>
@@ -138,15 +121,47 @@ include "../components/admin/app.php";
                         <?php endif; ?>
                     </div>
                 </div>
-                
+
                 <!-- Actions -->
                 <div class="mt-4">
-                    <a href="print_invoice.php?id=<?php echo $invoice['id']; ?>" class="btn btn-primary" target="_blank">Print Invoice</a>
-                    <a href="edit_invoice.php?id=<?php echo $invoice['id']; ?>" class="btn btn-warning">Edit Invoice</a>
+                    <button onclick="window.open('print_invoice.php?id=<?php echo $invoice['id']; ?>', '_blank')" class="btn btn-primary">Print Invoice</button>
+                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateStatusModal">Edit Invoice</button>
                 </div>
             <?php endif; ?>
         </main>
     </div>
 </div>
+
+
+<!-- Status Update Modal -->
+<div class="modal fade" id="updateStatusModal" tabindex="-1" aria-labelledby="updateStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateStatusModalLabel">Update Invoice Status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="update_invoice_status.php" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="invoice_id" value="<?php echo $invoice['id']; ?>">
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select" id="status" name="status" required>
+                            <option value="Pending" <?php echo ($invoice['status'] == 'Pending') ? 'selected' : ''; ?>>Pending</option>
+                            <option value="Paid" <?php echo ($invoice['status'] == 'Paid') ? 'selected' : ''; ?>>Paid</option>
+                            <option value="Canceled" <?php echo ($invoice['status'] == 'Canceled') ? 'selected' : ''; ?>>Canceled</option>
+                            <option value="Refunded" <?php echo ($invoice['status'] == 'Refunded') ? 'selected' : ''; ?>>Refunded</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update Status</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 
 <?php include "../components/admin/footer.php"; ?>
