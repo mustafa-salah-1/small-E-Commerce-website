@@ -67,7 +67,8 @@ include "../components/admin/app.php";
                                     </span>
                                 </p>
                                 <p><strong>Total quantity:</strong> <?php echo $invoice['quantity']; ?></p>
-                                <p><strong>Total Amount:</strong> $<?php echo number_format($invoice['total_price'], 2); ?></p>
+                                <p><strong>Total Delivery:</strong> IQD <?php echo number_format($invoice['delivery_price']); ?></p>
+                                <p><strong>Total Amount:</strong> IQD <?php echo number_format($invoice['total_price'] + $invoice['delivery_price']); ?></p>
                             </div>
                         </div>
                     </div>
@@ -109,8 +110,8 @@ include "../components/admin/app.php";
                                             <tr>
                                                 <td><?php echo $item['product_name']; ?></td>
                                                 <td><?php echo $item['quantity']; ?></td>
-                                                <td>$<?php echo number_format($item['price'], 2); ?></td>
-                                                <td>$<?php echo number_format($item['quantity'] * $item['price'], 2); ?></td>
+                                                <td>IQD <?php echo number_format($item['price']); ?></td>
+                                                <td>IQD <?php echo number_format($item['quantity'] * $item['price']); ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
