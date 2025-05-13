@@ -81,3 +81,20 @@ function getInvoiceStatusClass($status)
             return 'primary';
     }
 }
+
+function updateInvoiceStatus($invoiceId, $newStatus)
+{
+    global $connect;
+    try {
+        $sql = "UPDATE invoices SET status = :status WHERE id = :invoice_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':status', $newStatus, PDO::PARAM_STR);
+        $stmt->bindParam(':invoice_id', $invoiceId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->rowCount() > 0;
+    } catch (PDOException $e) {
+        error_log("Error updating invoice status: " . $e->getMessage());
+        return false;
+    }
+}

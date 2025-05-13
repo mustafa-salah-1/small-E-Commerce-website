@@ -12,9 +12,19 @@ if (isset($_GET['id'])) {
     $invoice = getInvoiceById($invoice_id);
     $invoice_items = getInvoiceProductsByInvoiceId($invoice_id);
     $page_mode = 'details';
-} else {
-    $invoice_items = [];
-    $page_mode = 'list';
+}
+
+if (isset($_POST['update_status'])) {
+    $invoice_id = $_POST['invoice_id'];
+    $status = $_POST['status'];
+
+    if (updateInvoiceStatus($invoice_id, $status)) {
+        $_SESSION['success'] = "Invoice status updated successfully.";
+    } else {
+        $_SESSION['error'] = "Failed to update invoice status.";
+    }
+    $invoice = getInvoiceById($invoice_id);
+    $invoice_items = getInvoiceProductsByInvoiceId($invoice_id);
 }
 
 include "../components/admin/app.php";
@@ -28,10 +38,8 @@ include "../components/admin/app.php";
 
         <main role="main" class="col-md-10 ml-sm-auto px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h2><?php echo $page_mode == 'details' ? 'Invoice Details' : 'Invoice Management'; ?></h2>
-                <?php if ($page_mode == 'details'): ?>
-                    <a href="orders.php" class="btn btn-secondary">Back to Orders</a>
-                <?php endif; ?>
+
+                <a href="orders.php" class="btn btn-secondary">Back to Orders</a>
             </div>
 
             <div class="mt-4">
@@ -50,7 +58,7 @@ include "../components/admin/app.php";
                 <?php endif; ?>
             </div>
 
-            <?php if ($page_mode == 'details' && $invoice): ?>
+            <?php if ($invoice): ?>
                 <!-- Invoice Details View -->
                 <div class="row">
                     <div class="col-md-6">
@@ -142,22 +150,23 @@ include "../components/admin/app.php";
                 <h5 class="modal-title" id="updateStatusModalLabel">Update Invoice Status</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="update_invoice_status.php" method="POST">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                 <div class="modal-body">
                     <input type="hidden" name="invoice_id" value="<?php echo $invoice['id']; ?>">
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select class="form-select" id="status" name="status" required>
-                            <option value="Pending" <?php echo ($invoice['status'] == 'Pending') ? 'selected' : ''; ?>>Pending</option>
-                            <option value="Paid" <?php echo ($invoice['status'] == 'Paid') ? 'selected' : ''; ?>>Paid</option>
-                            <option value="Canceled" <?php echo ($invoice['status'] == 'Canceled') ? 'selected' : ''; ?>>Canceled</option>
-                            <option value="Refunded" <?php echo ($invoice['status'] == 'Refunded') ? 'selected' : ''; ?>>Refunded</option>
+                            <option value="waiting" <?php echo ($invoice['status'] == 'waiting') ? 'selected' : ''; ?>>waiting</option>
+                            <option value="active" <?php echo ($invoice['status'] == 'active') ? 'selected' : ''; ?>>active</option>
+                            <option value="canceled" <?php echo ($invoice['status'] == 'canceled') ? 'selected' : ''; ?>>canceled</option>
+                            <option value="delivering" <?php echo ($invoice['status'] == 'delivering') ? 'selected' : ''; ?>>delivering</option>
+                            <option value="completed" <?php echo ($invoice['status'] == 'completed') ? 'selected' : ''; ?>>completed</option>
                         </select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Update Status</button>
+                    <button type="submit" name="update_status" class="btn btn-primary">Update Status</button>
                 </div>
             </form>
         </div>
