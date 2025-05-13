@@ -57,3 +57,22 @@ function getInvoicesByCustomerId($customerId)
         return false;
     }
 }
+
+function getInvoiceStatusClass($status)
+{
+    switch (strtolower($status)) {
+        case 'completed':
+            return 'success';
+        case 'waiting':
+            return 'warning';
+        case 'cancelled':
+        case 'canceled':
+            return 'danger';
+        case 'delivering':
+            return 'info';
+        case 'active':
+            return 'secondary';
+        default:
+            return 'primary';
+    }
+}

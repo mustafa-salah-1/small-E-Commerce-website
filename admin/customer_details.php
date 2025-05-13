@@ -2,6 +2,7 @@
 require "check.php";
 include "../app/php/config/config.php";
 include "../app/php/admin/customer/functions.php";
+include "../app/php/admin/invoice/functions.php";
 
 $title_page = "Customers";
 
@@ -30,7 +31,7 @@ include "../components/admin/app.php";
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h2><?php echo $page_mode == 'details' ? 'Customer Details' : 'Customer Management'; ?></h2>
                 <?php if ($page_mode == 'details'): ?>
-                    <a href="customer_details.php" class="btn btn-secondary">Back to List</a>
+                    <a href="customer.php" class="btn btn-secondary">Back to List</a>
                 <?php endif; ?>
             </div>
 
@@ -76,11 +77,6 @@ include "../components/admin/app.php";
                             </div>
                             <div class="card-body">
                                 <p><strong>Total Orders:</strong> <?php echo count($customer_orders); ?></p>
-                                <p><strong>Status:</strong>
-                                    <span class="badge <?php echo $customer['active'] ? 'badge-success' : 'badge-danger'; ?>">
-                                        <?php echo $customer['active'] ? 'Active' : 'Inactive'; ?>
-                                    </span>
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -99,6 +95,7 @@ include "../components/admin/app.php";
                                         <tr>
                                             <th>Order ID</th>
                                             <th>Date</th>
+                                            <th>Quantity</th>
                                             <th>Total</th>
                                             <th>Status</th>
                                             <th>Actions</th>
@@ -108,10 +105,11 @@ include "../components/admin/app.php";
                                         <?php foreach ($customer_orders as $order): ?>
                                             <tr>
                                                 <td><?php echo $order['id']; ?></td>
-                                                <td><?php echo date('Y-m-d', strtotime($order['order_date'])); ?></td>
-                                                <td>$<?php echo number_format($order['total_amount'], 2); ?></td>
+                                                <td><?php echo date('Y-m-d', strtotime($order['created_at'])); ?></td>
+                                                <td><?php echo $order['quantity']; ?></td>
+                                                <td>$<?php echo number_format($order['total_price'], 2); ?></td>
                                                 <td>
-                                                    <span class="badge badge-<?php echo getStatusClass($order['status']); ?>">
+                                                    <span class="badge bg-<?php echo getInvoiceStatusClass($order['status']); ?>">
                                                         <?php echo $order['status']; ?>
                                                     </span>
                                                 </td>
@@ -134,22 +132,3 @@ include "../components/admin/app.php";
 </div>
 
 <?php include "../components/admin/footer.php"; ?>
-
-<?php
-// Helper function for status badges
-function getStatusClass($status)
-{
-    switch (strtolower($status)) {
-        case 'completed':
-            return 'success';
-        case 'processing':
-            return 'primary';
-        case 'pending':
-            return 'warning';
-        case 'cancelled':
-            return 'danger';
-        default:
-            return 'secondary';
-    }
-}
-?>
