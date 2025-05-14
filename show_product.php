@@ -6,6 +6,7 @@ $file_css = "detail.css";
 include 'components/app.php';
 include "app/php/config/config.php";
 include "app/php/admin/product/functions.php";
+include "app/php/admin/product_image/functions.php";
 
 $product = getProductById($_GET['id']);
 $images = getImageByIdProduct($_GET['id']);
