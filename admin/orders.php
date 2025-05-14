@@ -20,20 +20,9 @@ include "../components/admin/app.php";
                 <h2>Orders Management</h2>  
             </div>
             <div class="mt-4">
-                <?php if (isset($_SESSION['success'])): ?>
-                    <div class="alert alert-success">
-                        <?php echo $_SESSION['success'];
-                        unset($_SESSION['success']); ?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if (isset($_SESSION['error'])): ?>
-                    <div class="alert alert-danger">
-                        <?php echo $_SESSION['error'];
-                        unset($_SESSION['error']); ?>
-                    </div>
-                <?php endif; ?>
+                
             </div>
+
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>

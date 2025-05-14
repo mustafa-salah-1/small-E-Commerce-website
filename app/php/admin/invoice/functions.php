@@ -14,14 +14,24 @@ function getAllInvoiceCount()
     }
 }
 
-function getAllInvoices()
+function getAllInvoices($status = null)
 {
     global $connect;
     try {
         $sql = "SELECT invoices.*, customers.customer_name AS customer_name, 
         customers.customer_email AS customer_email 
         FROM invoices LEFT JOIN customers ON invoices.customer_id = customers.id";
+        
+        if ($status !== null) {
+            $sql .= " WHERE invoices.status = :status";
+        }
+        
         $stmt = $connect->prepare($sql);
+        
+        if ($status !== null) {
+            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
+        }
+        
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {

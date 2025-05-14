@@ -18,6 +18,13 @@ if (isset($_POST['delete'])) {
 
 $currentYear = date('Y');
 $currentMonth = date('m');
+
+if (isset($_POST['date'])) {
+    $month_year = $_POST['month_year'];
+    $currentYear = date('Y', strtotime($month_year));
+    $currentMonth = date('m', strtotime($month_year));
+}
+
 $invoice_products = getAllInvoiceProducts($currentYear, $currentMonth);
 $total_invoice_products = getTotalInvoiceProducts($currentYear, $currentMonth);
 
@@ -39,6 +46,14 @@ include "../components/admin/app.php";
             <div class="mt-4 d-flex justify-content-around p-2 bg-light rounded">
                 <h5>Total Quantity: <?php echo number_format($total_invoice_products['total_quantity']); ?></h5>
                 <h5>Total Price: <?php echo number_format($total_invoice_products['total_price']); ?> IQD</h5>
+
+                <div>
+                    <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                        <input type="month" name="month_year" value="<?php echo $currentYear . '-' . $currentMonth; ?>">
+                        <button type="submit" name="date" class="btn btn-primary btn-sm ml-2">Filter</button>
+                    </form>
+
+                </div>
             </div>
 
             <div class="table-responsive">
