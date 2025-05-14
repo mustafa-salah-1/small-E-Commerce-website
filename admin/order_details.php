@@ -96,10 +96,10 @@ include "../components/admin/app.php";
                     </div>
                 </div>
 
-                <!-- Invoice Items -->
+                <!-- Order Items -->
                 <div class="card">
                     <div class="card-header">
-                        <h4>Invoice Items</h4>
+                        <h4>Order Items</h4>
                     </div>
                     <div class="card-body">
                         <?php if (count($invoice_items) > 0): ?>
@@ -132,9 +132,9 @@ include "../components/admin/app.php";
                 </div>
 
                 <!-- Actions -->
-                <div class="mt-4">
+                <div class="mb-5">
                     <button onclick="window.open('print_invoice.php?id=<?php echo $invoice['id']; ?>', '_blank')" class="btn btn-primary">Print Invoice</button>
-                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateStatusModal">Edit Invoice</button>
+                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateStatusModal">Edit Order</button>
                 </div>
             <?php endif; ?>
         </main>

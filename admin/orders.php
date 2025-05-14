@@ -1,11 +1,19 @@
 <?php
 require "check.php";
 include "../app/php/config/config.php";
-include "../app/php/admin/invoice/functions.php";  
+include "../app/php/admin/invoice/functions.php";
 
-$invoices = getAllInvoices();  
+$invoices = getAllInvoices();
+if (isset($_POST['update_status'])) {
+    $status = $_POST['status'];
+    if ($status) {
+        $invoices = getAllInvoices($status);
+    } else {
+        $invoices = getAllInvoices();
+    }
+}
 
-$title_page = "Invoices"; 
+$title_page = "Invoices";
 include "../components/admin/app.php";
 ?>
 
@@ -17,10 +25,19 @@ include "../components/admin/app.php";
 
         <main role="main" class="col-md-10 ml-sm-auto px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h2>Orders Management</h2>  
-            </div>
-            <div class="mt-4">
-                
+                <h2>Orders Management</h2>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST"
+                    class="d-flex align-items-center">
+                    <select class="form-select" id="status" name="status">
+                        <option value="" selected>All</option>
+                        <option value="waiting">waiting</option>
+                        <option value="active">active</option>
+                        <option value="canceled">canceled</option>
+                        <option value="delivering">delivering</option>
+                        <option value="completed">completed</option>
+                    </select>
+                    <button type="submit" name="update_status" class="btn btn-primary">Submit</button>
+                </form>
             </div>
 
             <div class="table-responsive">

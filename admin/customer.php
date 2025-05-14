@@ -42,6 +42,7 @@ include "../components/admin/app.php";
                             <th>Name</th>
                             <th>Email</th>
                             <th>Password</th>
+                            <th>Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
