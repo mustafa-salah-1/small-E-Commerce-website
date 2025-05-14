@@ -35,7 +35,8 @@ function getInvoiceById($invoiceId)
     global $connect;
     try {
         $sql = "SELECT invoices.*, customers.customer_name AS customer_name, 
-        customers.customer_email AS customer_email 
+        customers.customer_email AS customer_email ,
+        customers.customer_phone AS customer_phone
         FROM invoices LEFT JOIN customers ON invoices.customer_id = customers.id 
         WHERE invoices.id = :invoice_id";
         $stmt = $connect->prepare($sql);

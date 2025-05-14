@@ -59,15 +59,14 @@ include "../components/admin/app.php";
             </div>
 
             <?php if ($invoice): ?>
-                <!-- Invoice Details View -->
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card mb-4">
                             <div class="card-header">
-                                <h4>Invoice Information</h4>
+                                <h4>Order Information</h4>
                             </div>
                             <div class="card-body">
-                                <p><strong>Invoice ID:</strong> <?php echo $invoice['id']; ?></p>
+                                <p><strong>Order ID:</strong> <?php echo $invoice['id']; ?></p>
                                 <p><strong>Date:</strong> <?php echo date('F d, Y', strtotime($invoice['created_at'])); ?></p>
                                 <p><strong>Status:</strong>
                                     <span class="badge bg-<?php echo getInvoiceStatusClass($invoice['status']); ?>">
@@ -87,6 +86,7 @@ include "../components/admin/app.php";
                             </div>
                             <div class="card-body">
                                 <p><strong>Customer Name:</strong> <?php echo $invoice['customer_name']; ?></p>
+                                <p><strong>Phone:</strong> <?php echo $invoice['customer_phone']; ?></p>
                                 <p><strong>Email:</strong> <?php echo $invoice['customer_email']; ?></p>
                                 <?php if (isset($invoice['customer_phone'])): ?>
                                     <p><strong>Phone:</strong> <?php echo $invoice['customer_phone']; ?></p>
