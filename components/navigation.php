@@ -34,7 +34,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="discount.php">Discount</a>
+                    <a class="nav-link" href="cart.php">Cart</a>
                 </li>
             </ul>
 

@@ -10,6 +10,13 @@ include "app/php/admin/product_image/functions.php";
 
 $product = getProductById($_GET['id']);
 $images = getImageByIdProduct($_GET['id']);
+
+if(isset($_POST['submit'])) {
+    $productId = $_POST['product_id'];
+    addToCart($productId);
+    header("Location: cart.php");
+    exit();
+}
 ?>
 
 <!-- Product Detail Container -->
@@ -42,13 +49,16 @@ $images = getImageByIdProduct($_GET['id']);
             <p class="product-subtitle"><?= $product['product_content'] ?></p>
 
             <div class="price-container">
-                <span class="current-price">IQD <?= $product['product_price_sell'] ?></span>
+                <span class="current-price">IQD <?= number_format($product['product_price_sell']); ?></span>
             </div>
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <button class="btn-add-to-cart">
-                    <i class="bi bi-cart3"></i> ADD TO CART
-                </button>
+                <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="add-to-cart-form">
+                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                    <button type="submit" name="submit" class="btn-add-to-cart">
+                        <i class="bi bi-cart3"></i> ADD TO CART
+                    </button>
+                </form>
                 <button class="btn-wishlist">
                     <i class="bi bi-heart"></i>
                 </button>
@@ -56,10 +66,6 @@ $images = getImageByIdProduct($_GET['id']);
 
             <!-- Delivery Info -->
             <div class="delivery-info">
-                <div class="delivery-item">
-                    <i class="bi bi-truck"></i>
-                    <span>Free shipping on orders over $35</span>
-                </div>
                 <div class="delivery-item">
                     <i class="bi bi-arrow-repeat"></i>
                     <span>30-day free returns</span>
