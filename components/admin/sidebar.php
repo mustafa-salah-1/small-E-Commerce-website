@@ -6,6 +6,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link active" href="sales.php">
+                <i class="fas fa-chart-line"></i> Sales
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="customer.php">
                 <i class="fas fa-users"></i> Customers
             </a>

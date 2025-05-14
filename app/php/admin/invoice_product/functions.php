@@ -18,11 +18,9 @@ function getAllInvoiceProducts()
 {
     global $connect;
     try {
-        $sql = "SELECT invoice_products.*, invoices.invoice_number, 
-        products.product_name 
-        FROM invoice_products 
-        LEFT JOIN invoices ON invoice_products.invoice_id = invoices.id
-        LEFT JOIN products ON invoice_products.product_id = products.id";
+        $sql = "SELECT invoice_products.*, products.product_name
+        FROM invoice_products
+        JOIN products ON invoice_products.product_id = products.id";
         $stmt = $connect->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -62,6 +60,20 @@ function getInvoiceProductsByInvoiceId($invoiceId)
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         error_log("Error getting invoice products by invoice ID: " . $e->getMessage());
+        return false;
+    }
+}
+
+function deleteInvoiceProduct($invoiceProductId)
+{
+    global $connect;
+    try {
+        $sql = "DELETE FROM invoice_products WHERE id = :invoice_product_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':invoice_product_id', $invoiceProductId, PDO::PARAM_INT);
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        error_log("Error deleting invoice product: " . $e->getMessage());
         return false;
     }
 }

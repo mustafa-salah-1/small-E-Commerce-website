@@ -27,7 +27,7 @@ function getAllCategories()
         return false;
     }
 }
-
+ 
 function getCategoryById($categoryId)
 {
     global $connect;
