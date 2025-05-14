@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2025 at 01:29 PM
+-- Generation Time: May 14, 2025 at 08:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,6 +34,13 @@ CREATE TABLE `admins` (
   `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `admin_name`, `admin_password`, `created_at`) VALUES
+(1, 'admin', 'admin', '2025-05-10');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +53,11 @@ CREATE TABLE `brands` (
   `brand_image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `brands`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -56,8 +68,7 @@ CREATE TABLE `carts` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `color` varchar(20) NOT NULL
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -72,18 +83,10 @@ CREATE TABLE `categories` (
   `category_image` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `colors`
+-- Dumping data for table `categories`
 --
 
-CREATE TABLE `colors` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `color_name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -94,22 +97,16 @@ CREATE TABLE `colors` (
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
   `customer_name` varchar(40) NOT NULL,
+  `customer_email` varchar(150) NOT NULL,
+  `customer_phone` varchar(12) NOT NULL,
   `customer_password` text NOT NULL,
   `customer_image` text NOT NULL,
   `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `discounts`
+-- Dumping data for table `customers`
 --
-
-CREATE TABLE `discounts` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `percent` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -124,9 +121,13 @@ CREATE TABLE `invoices` (
   `quantity` int(11) NOT NULL,
   `delivery_price` double NOT NULL,
   `total_price` double NOT NULL,
-  `status` enum('waitting','active','delivering','completed','canceled') NOT NULL,
+  `status` enum('waiting','active','delivering','completed','canceled') NOT NULL,
   `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `invoices`
+--
 
 -- --------------------------------------------------------
 
@@ -138,11 +139,14 @@ CREATE TABLE `invoice_products` (
   `id` int(11) NOT NULL,
   `invoice_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `color` varchar(20) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` double NOT NULL,
   `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `invoice_products`
+--
 
 -- --------------------------------------------------------
 
@@ -153,6 +157,7 @@ CREATE TABLE `invoice_products` (
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `product_name` varchar(255) NOT NULL,
+  `product_quantity` int(11) NOT NULL,
   `product_content` text NOT NULL,
   `product_price` double NOT NULL,
   `product_price_sell` double NOT NULL,
@@ -162,6 +167,10 @@ CREATE TABLE `products` (
   `product_new` enum('true','false') NOT NULL,
   `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
 
 --
 -- Indexes for dumped tables
@@ -194,24 +203,10 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `colors`
---
-ALTER TABLE `colors`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
-
---
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `discounts`
---
-ALTER TABLE `discounts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `invoices`
@@ -232,7 +227,9 @@ ALTER TABLE `invoice_products`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `brand_id` (`brand_id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -242,13 +239,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `carts`
@@ -260,43 +257,31 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `colors`
---
-ALTER TABLE `colors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `discounts`
---
-ALTER TABLE `discounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `invoice_products`
 --
 ALTER TABLE `invoice_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
@@ -310,18 +295,6 @@ ALTER TABLE `carts`
   ADD CONSTRAINT `carts_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `colors`
---
-ALTER TABLE `colors`
-  ADD CONSTRAINT `colors_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `discounts`
---
-ALTER TABLE `discounts`
-  ADD CONSTRAINT `discounts_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `invoices`
 --
 ALTER TABLE `invoices`
@@ -333,6 +306,13 @@ ALTER TABLE `invoices`
 ALTER TABLE `invoice_products`
   ADD CONSTRAINT `invoice_products_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `invoice_products_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
