@@ -59,3 +59,19 @@ function addProductImage($productId, $productImage)
         return false;
     }
 }
+
+function getImageByIdProduct($productId)
+{
+    global $connect;
+    try {
+        $sql = "SELECT image_name FROM product_images WHERE product_id = :product_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
+        $stmt->execute();
+        $images = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $images;
+    } catch (PDOException $e) {
+        error_log("Error getting product by ID: " . $e->getMessage());
+        return false;
+    }
+}

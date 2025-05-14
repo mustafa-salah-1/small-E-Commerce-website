@@ -8,7 +8,8 @@ include "app/php/config/config.php";
 include "app/php/admin/product/functions.php";
 
 $product = getProductById($_GET['id']);
-?> 
+$images = getImageByIdProduct($_GET['id']);
+?>
 
 <!-- Product Detail Container -->
 <div class="product-detail-container">
@@ -21,70 +22,27 @@ $product = getProductById($_GET['id']);
     <div class="product-hero">
         <!-- Product Images -->
         <div class="product-image-container">
-            <img src="public/img/14.jpg" alt="CyberTech Pro X Headset" class="main-product-image" id="mainProductImage">
-            <div class="thumbnail-container">
-                <img src="public/img/15.jpg" alt="Thumbnail 1" class="product-thumbnail active"
-                    onclick="changeMainImage(this, 'public/img/15.jpg')">
-                <img src="public/img/16.jpg" alt="Thumbnail 2" class="product-thumbnail"
-                    onclick="changeMainImage(this, 'public/img/16.jpg')">
-                <img src="public/img/17.avif" alt="Thumbnail 3" class="product-thumbnail"
-                    onclick="changeMainImage(this, 'public/img/17.avif')">
-            </div>
+            <?php if (count($images) > 0): ?>
+                <img src="public/product-images/images/<?= $images[0]['image_name'] ?>" alt="CyberTech Pro X Headset" class="main-product-image" id="mainProductImage">
+                <div class="thumbnail-container">
+                    <?php foreach ($images as $image): ?>
+                        <img src="public/product-images/images/<?= $image['image_name'] ?>" alt="Thumbnail" class="product-thumbnail" onclick="changeMainImage(this, 'public/product-images/images/<?= $image['image_name'] ?>')">
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <img src="public/product-images/main/<?= $product['product_image'] ?>" class="main-product-image" id="mainProductImage">
+            <?php endif; ?>
         </div>
 
         <!-- Product Info -->
         <div class="product-info">
-            <div class="product-badges">
-                <span class="product-badge badge-new">New</span>
-                <span class="product-badge badge-bestseller">Bestseller</span>
-            </div>
 
-            <h1 class="product-title">Redragon K552 Kumara</h1>
-            <p class="product-subtitle">Mechanical Gaming Keyboard with RGB Backlight</p>
-
-            <div class="rating-container">
-                <div class="stars">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star"></i>
-                </div>
-                <span class="review-count">4,326 reviews</span>
-                <span class="stock-status">
-                    <i class="bi bi-check-circle-fill"></i> In Stock
-                </span>
-            </div>
+            <h1 class="product-title"><?= $product['product_name'] ?></h1>
+            <p class="product-subtitle"><?= $product['product_content'] ?></p>
 
             <div class="price-container">
-                <span class="current-price">$36</span>
-                <span class="original-price">$49</span>
-                <span class="discount-badge">Save $13</span>
+                <span class="current-price">IQD <?= $product['product_price_sell'] ?></span>
             </div>
-
-            <p class="product-description">
-                The Redragon K552 Kumara features a compact 87-key mechanical design with Outemu Blue switches for tactile feedback and clicky sound. The durable metal construction and rainbow LED backlighting make it perfect for gaming and typing.
-            </p>
-
-            <!-- Color Options -->
-            <div class="color-options">
-                <h5>COLOR OPTIONS</h5>
-                <div class="color-selection">
-                    <div class="color-option selected" style="background-color: #ff0000;" title="Red Backlight"></div>
-                    <div class="color-option" style="background-color: #00ff00;" title="Green Backlight"></div>
-                    <div class="color-option" style="background-color: #0000ff;" title="Blue Backlight"></div>
-                    <div class="color-option" style="background-color: #ffffff;" title="White Backlight"></div>
-                </div>
-            </div>
-
-            <!-- Quantity Selector -->
-            <div class="quantity-selector">
-                <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
-                <input type="text" class="quantity-input" value="1" id="productQuantity">
-                <button class="quantity-btn" onclick="increaseQuantity()">+</button>
-                <span class="stock-warning">Only 8 left in stock</span>
-            </div>
-
             <!-- Action Buttons -->
             <div class="action-buttons">
                 <button class="btn-add-to-cart">
@@ -113,55 +71,6 @@ $product = getProductById($_GET['id']);
         </div>
     </div>
 
-    <!-- Product Tabs -->
-    <div class="product-tabs">
-        <ul class="nav nav-tabs" id="productTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="specs-tab" data-bs-toggle="tab" data-bs-target="#specs" type="button" role="tab">SPECIFICATIONS</button>
-            </li>
-        </ul>
-
-        <div class="tab-content" id="productTabsContent">
-            <!-- Specifications Tab -->
-            <div class="tab-pane fade show active" id="specs" role="tabpanel">
-                <div class="specs-grid">
-                    <div class="spec-item">
-                        <div class="spec-name">Switch Type</div>
-                        <div class="spec-value">Outemu Blue (Clicky)</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-name">Keycaps</div>
-                        <div class="spec-value">ABS Double-Shot</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-name">Backlight</div>
-                        <div class="spec-value">RGB Rainbow (7 Colors)</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-name">Layout</div>
-                        <div class="spec-value">87-key Tenkeyless</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-name">Polling Rate</div>
-                        <div class="spec-value">1000Hz</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-name">Construction</div>
-                        <div class="spec-value">Metal Top Plate</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-name">Dimensions</div>
-                        <div class="spec-value">14.2 x 5.1 x 1.5 inches</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-name">Weight</div>
-                        <div class="spec-value">2.2 lbs (1 kg)</div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
 </div>
 
 <script>
