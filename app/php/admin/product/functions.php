@@ -38,11 +38,35 @@ function getAllProducts()
     }
 }
 
+function getProductsByCategory($categoryName, $limit = 8)
+{
+    global $connect;
+    try {
+        $sql = "SELECT p.*, c.category_name
+                FROM products p
+                LEFT JOIN categories c ON p.category_id = c.id
+                WHERE c.category_name = :category_name
+                LIMIT :limit";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':category_name', $categoryName, PDO::PARAM_STR);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error getting products by category: " . $e->getMessage());
+        return false;
+    }
+}
+
 function getProductById($productId)
 {
     global $connect;
     try {
-        $sql = "SELECT * FROM products WHERE id = :product_id";
+        $sql = "SELECT p.*, c.category_name, b.brand_name 
+            FROM products p
+            LEFT JOIN categories c ON p.category_id = c.id
+            LEFT JOIN brands b ON p.brand_id = b.id
+            WHERE p.id = :product_id";
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
         $stmt->execute();
