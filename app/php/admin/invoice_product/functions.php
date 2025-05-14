@@ -14,19 +14,47 @@ function getAllInvoiceProductCount()
     }
 }
 
-function getAllInvoiceProducts()
+function getAllInvoiceProducts($year, $month)
 {
     global $connect;
     try {
         $sql = "SELECT invoice_products.*, products.product_name
         FROM invoice_products
-        JOIN products ON invoice_products.product_id = products.id";
+        JOIN products ON invoice_products.product_id = products.id
+        JOIN invoices ON invoice_products.invoice_id = invoices.id
+        WHERE invoices.status = 'completed'
+        AND YEAR(invoice_products.created_at) = :year
+        AND MONTH(invoice_products.created_at) = :month";
         $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+        $stmt->bindParam(':month', $month, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         error_log("Error getting all invoice products: " . $e->getMessage());
         return false;
+    }
+}
+
+function getTotalInvoiceProducts($year , $month)
+{
+    global $connect;
+    try {
+        $sql = "SELECT SUM(invoice_products.price * invoice_products.quantity) AS total_price
+         , SUM(invoice_products.quantity) AS total_quantity FROM invoice_products 
+         JOIN invoices ON invoice_products.invoice_id = invoices.id 
+         WHERE invoices.status = 'completed'
+         AND YEAR(invoice_products.created_at) = :year
+         AND MONTH(invoice_products.created_at) = :month";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':year', $year, PDO::PARAM_INT);
+        $stmt->bindParam(':month', $month, PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        error_log("Error calculating total invoice products price: " . $e->getMessage());
+        return 0;
     }
 }
 
