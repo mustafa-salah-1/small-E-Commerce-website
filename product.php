@@ -4,24 +4,19 @@ $title_page = "Game Store - Products";
 $file_css = "product.css";
 
 include "app/php/config/config.php";
-include "check.php";
 include 'components/app.php';
 
-// Include product-related functions
 include "app/php/admin/product/functions.php";
 include "app/php/admin/brand/functions.php";
 include "app/php/admin/category/functions.php";
 
-// Get filter parameters
 $brand_id = isset($_GET['brand']) ? $_GET['brand'] : null;
 $category_id = isset($_GET['category']) ? $_GET['category'] : null;
 $search_term = isset($_GET['search']) ? $_GET['search'] : '';
 
-// Get all brands and categories for filters
 $brands = getAllBrands();
 $categories = getAllCategories();
 
-// Get filtered products
 if ($brand_id || $category_id || !empty($search_term)) {
     $products = getFilteredProducts($brand_id, $category_id, $search_term);
 } else {
@@ -127,7 +122,7 @@ if ($brand_id || $category_id || !empty($search_term)) {
                                 ?></span>
                             </div>
                             <div class="mt-auto d-flex justify-content-between align-items-center">
-                                <span class="price">IQD <?php echo number_format($product['product_price']); ?></span>
+                                <span class="price">IQD <?php echo number_format($product['product_price_sell']); ?></span>
                             </div>
                         </div>
                     </div>

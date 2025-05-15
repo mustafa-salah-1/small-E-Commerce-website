@@ -3,9 +3,9 @@
         <a class="navbar-brand fs-4" href="index.php">
             <img src="public/img/ll.png" alt="Logo" height="30"
                 class="d-inline-block me-2">
-                <span class="d-none d-md-inline">
-                    GAME<span style="color: #00aaff">STORE</span>
-                </span>
+            <span class="d-none d-md-inline">
+                GAME<span style="color: #00aaff">STORE</span>
+            </span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,19 +18,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="about.php">About</a>
-                </li>
                 <li class="nav-item dropdown">
-                    <li class="nav-item">
-                        <a class="nav-link" href="product.php">Product</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="product.php">Product</a>
                 </li>
-                <?php if(isset($_SESSION['customer_name'])) { ?>
+                </li>
+                <?php if (isset($_SESSION['customer_name'])) { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="cart.php">Cart</a>
                     </li>
                 <?php } ?>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.php">About</a>
+                </li>
             </ul>
 
 
