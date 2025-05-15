@@ -17,12 +17,12 @@ function getAllProductCount()
 function getAllProducts()
 {
     global $connect;
-     
+
     if (!$connect) {
         echo  "Database connection not established";
         return false;
     }
-    
+
     try {
         $sql = "SELECT p.*, c.category_name, b.brand_name 
             FROM products p
@@ -33,7 +33,7 @@ function getAllProducts()
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-        echo "Error getting all products: " . $e->getMessage() ;
+        echo "Error getting all products: " . $e->getMessage();
         return false;
     }
 }
@@ -46,6 +46,7 @@ function getProductsByCategory($categoryName, $limit = 8)
                 FROM products p
                 LEFT JOIN categories c ON p.category_id = c.id
                 WHERE c.category_name = :category_name
+                AND p.product_quantity > 0
                 LIMIT :limit";
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':category_name', $categoryName, PDO::PARAM_STR);
@@ -77,7 +78,7 @@ function getProductById($productId)
     }
 }
 
-function deleteProductById($productId) 
+function deleteProductById($productId)
 {
     global $connect;
     try {
@@ -87,7 +88,7 @@ function deleteProductById($productId)
         $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
         $stmt->execute();
         $product = $stmt->fetch(PDO::FETCH_ASSOC);
-        
+
         if ($product && !empty($product['product_image'])) {
             // Define the path to the product image
             $imagePath = '../public/product-images/main/' . $product['product_image'];
@@ -97,7 +98,7 @@ function deleteProductById($productId)
                 unlink($imagePath);
             }
         }
-        
+
         // Now delete the product from the database
         $sql = "DELETE FROM products WHERE id = :product_id";
         $stmt = $connect->prepare($sql);
@@ -135,8 +136,8 @@ function addProduct($productName, $productPrice, $productPriceSell, $categoryId,
 function updateProduct($productId, $productName, $productPrice, $productPriceSell, $categoryId, $brandId, $productImage, $quantity, $content)
 {
     global $connect;
-    try {  
-        
+    try {
+
         $sql = "UPDATE products SET 
                 product_name = :name, 
                 product_price = :price, 
@@ -147,7 +148,7 @@ function updateProduct($productId, $productName, $productPrice, $productPriceSel
                 product_quantity = :quantity, 
                 product_content = :content 
                 WHERE id = :product_id";
-        
+
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
         $stmt->bindParam(':name', $productName);
@@ -158,10 +159,38 @@ function updateProduct($productId, $productName, $productPrice, $productPriceSel
         $stmt->bindParam(':image', $productImage);
         $stmt->bindParam(':quantity', $quantity);
         $stmt->bindParam(':content', $content);
-        
+
         return $stmt->execute();
     } catch (PDOException $e) {
         error_log("Error updating product: " . $e->getMessage());
+        return false;
+    }
+}
+
+function decreaseProductQuantity($productId, $amount)
+{
+    global $connect;
+    try {
+        $sql = "SELECT product_quantity FROM products WHERE id = :product_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
+        $stmt->execute();
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$product) {
+            return false;
+        }
+
+        $newQuantity = max(0, $product['product_quantity'] - $amount);
+
+        $sql = "UPDATE products SET product_quantity = :quantity WHERE id = :product_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
+        $stmt->bindParam(':quantity', $newQuantity, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        error_log("Error decreasing product quantity: " . $e->getMessage());
         return false;
     }
 }

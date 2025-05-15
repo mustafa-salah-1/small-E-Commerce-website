@@ -11,6 +11,7 @@ include "check.php";
 include 'components/app.php';
 include "app/php/admin/cart/functions.php";
 include "app/php/admin/invoice/functions.php";
+include "app/php/admin/product/functions.php";
 include "app/php/admin/invoice_product/functions.php";
 
 
@@ -50,6 +51,7 @@ if (isset($_POST['checkout'])) {
         $price = $cart['product_price_sell'];
 
         insertInvoiceProduct($invoiceId, $productId, $quantity, $price);
+        decreaseProductQuantity($productId, $quantity);
     }
     emptyCartByCustomer($_SESSION['customer_id']);
 }

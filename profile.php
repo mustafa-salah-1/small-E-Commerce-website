@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   updateCustomer($_SESSION['customer_id'], $customer_name, $customer_email, $customer_phone, $new_password);
 
-  header("Location: " . $_SERVER['PHP_SELF']);
+  echo "<script>window.location.href = 'profile.php';</script>";
   exit();
 }
 
@@ -50,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="row text-md-end">
       <div class="col-md-12 d-flex flex-wrap gap-3 justify-content-md-end justify-content-center">
         <button class="btn btn-neon icon-btn"><i class="fas fa-user-edit"></i> Edit Profile</button>
-        <button class="btn btn-neon icon-btn"><i class="fas fa-shopping-cart"></i> Buy List</button>
-        <button class="btn btn-neon icon-btn"><i class="fas fa-heart"></i> Favourite</button>
+        <!-- <button class="btn btn-neon icon-btn"><i class="fas fa-shopping-cart"></i> Buy List</button> -->
+        <!-- <button class="btn btn-neon icon-btn"><i class="fas fa-heart"></i> Favourite</button> -->
       </div>
     </div>
   </div>
