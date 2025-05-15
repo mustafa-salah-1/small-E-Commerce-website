@@ -109,3 +109,25 @@ function updateInvoiceStatus($invoiceId, $newStatus)
         return false;
     }
 }
+
+function addInvoice($customerId, $totalPrice, $location, $quantity)
+{
+    global $connect;
+    try {
+        $sql = "INSERT INTO invoices (customer_id, total_price, location, quantity, delivery_price, status, created_at) 
+                VALUES (:customer_id, :total_price, :location, :quantity, '5000', 'waiting', NOW())";
+
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':customer_id', $customerId, PDO::PARAM_INT);
+        $stmt->bindParam(':total_price', $totalPrice, PDO::PARAM_STR);
+        $stmt->bindParam(':location', $location, PDO::PARAM_STR);
+        $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
+        
+        $stmt->execute();
+        
+        return $connect->lastInsertId();
+    } catch (PDOException $e) {
+        error_log("Error adding invoice: " . $e->getMessage());
+        return false;
+    }
+}

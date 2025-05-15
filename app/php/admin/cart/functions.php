@@ -93,3 +93,37 @@ function deleteCart($cartId)
         return false;
     }
 }
+
+function emptyCartByCustomer($customerId)
+{
+    global $connect;
+    try {
+        $sql = "DELETE FROM carts WHERE customer_id = :customer_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':customer_id', $customerId, PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        error_log("Error emptying cart for customer: " . $e->getMessage());
+        return false;
+    }
+}
+function getCartSummaryByCustomer($customerId)
+{
+    global $connect;
+    try {
+        $sql = "SELECT 
+                SUM(carts.quantity) AS total_quantity,
+                SUM(carts.quantity * products.product_price_sell) AS total_price
+                FROM carts 
+                JOIN products ON products.id = carts.product_id 
+                WHERE carts.customer_id = :customer_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':customer_id', $customerId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error getting cart summary for customer: " . $e->getMessage());
+        return false;
+    }
+}

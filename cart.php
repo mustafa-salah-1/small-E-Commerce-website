@@ -10,6 +10,8 @@ include "check.php";
 
 include 'components/app.php';
 include "app/php/admin/cart/functions.php";
+include "app/php/admin/invoice/functions.php";
+include "app/php/admin/invoice_product/functions.php";
 
 
 if (isset($_POST['delete'])) {
@@ -34,8 +36,22 @@ if (isset($_POST['decrease'])) {
 if (isset($_POST['checkout'])) {
     $lat = $_POST['lat'];
     $lng = $_POST['lng'];
+    $location = $lat . ',' . $lng;
 
-    echo $lat, $lng;
+    $carts = getCartByCustomerId($_SESSION['customer_id']);
+    $total = getCartSummaryByCustomer($_SESSION['customer_id']);
+
+    addInvoice($_SESSION['customer_id'], $total['total_price'], $location, $total['total_quantity']);
+    $invoiceId = $connect->lastInsertId();
+
+    foreach ($carts as $cart) {
+        $productId = $cart['product_id'];
+        $quantity = $cart['quantity'];
+        $price = $cart['product_price_sell'];
+
+        insertInvoiceProduct($invoiceId, $productId, $quantity, $price);
+    }
+    emptyCartByCustomer($_SESSION['customer_id']);
 }
 
 $carts = getCartByCustomerId($_SESSION['customer_id']);
@@ -86,8 +102,8 @@ $carts = getCartByCustomerId($_SESSION['customer_id']);
                     <div class="item-total">
                         <p>IQD <?= $itemTotal ?></p>
                     </div>
-                    <div class="item-remove">
-                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="remove-form">
+                    <div>
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
                             <input type="hidden" name="id" value="<?= $item['id'] ?>">
                             <button type="submit" name="delete" class="bg-danger text-white p-1 rounded"><i class="bi bi-trash"></i> delete</button>
                         </form>

@@ -36,7 +36,7 @@ function getAllInvoiceProducts($year, $month)
     }
 }
 
-function getTotalInvoiceProducts($year , $month)
+function getTotalInvoiceProducts($year, $month)
 {
     global $connect;
     try {
@@ -102,6 +102,24 @@ function deleteInvoiceProduct($invoiceProductId)
         return $stmt->execute();
     } catch (PDOException $e) {
         error_log("Error deleting invoice product: " . $e->getMessage());
+        return false;
+    }
+}
+
+function insertInvoiceProduct($invoice_id, $product_id, $quantity, $price)
+{
+    global $connect;
+    try {
+        $sql = "INSERT INTO invoice_products (invoice_id, product_id, quantity, price, created_at) 
+                VALUES (:invoice_id, :product_id, :quantity, :price, NOW())";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':invoice_id', $invoice_id, PDO::PARAM_INT);
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+        $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
+        $stmt->bindParam(':price', $price, PDO::PARAM_STR);
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        error_log("Error inserting invoice product: " . $e->getMessage());
         return false;
     }
 }
