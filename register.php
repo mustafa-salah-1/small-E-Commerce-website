@@ -17,7 +17,6 @@ $username_err = $password_err = $confirm_password_err = $email_err = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
 
-  // Validate username
   if (empty(trim($_POST["username"]))) {
     $username_err = "Please enter a username.";
   } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))) {
@@ -31,17 +30,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
   } elseif (!filter_var(trim($_POST["email"]), FILTER_VALIDATE_EMAIL)) {
     $email_err = "Invalid email format.";
   } else {
-    // Prepare a select statement
     $sql = "SELECT id FROM customers WHERE customer_email = :email";
 
     if ($stmt = $connect->prepare($sql)) {
-      // Bind variables to the prepared statement as parameters
       $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
 
-      // Set parameters
       $param_email = trim($_POST["email"]);
 
-      // Attempt to execute the prepared statement
       if ($stmt->execute()) {
         if ($stmt->rowCount() == 1) {
           $email_err = "This email is already taken.";
@@ -52,12 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
         echo "Oops! Something went wrong. Please try again later.";
       }
 
-      // Close statement
-      unset($stmt);
     }
   }
 
-  // Validate password
   if (empty(trim($_POST["password"]))) {
     $password_err = "Please enter a password.";
   } elseif (strlen(trim($_POST["password"])) < 6) {
@@ -76,15 +68,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
     }
   }
 
-  // Check input errors before inserting in database
   if (empty($username_err) && empty($password_err) && empty($confirm_password_err)
   && empty($email_err)) {
 
-    // Prepare an insert statement
     $sql = "INSERT INTO customers (customer_name, customer_password, customer_email, customer_image) VALUES (:username, :password, :email, :image)";
 
     if ($stmt = $connect->prepare($sql)) {
-      // Bind variables to the prepared statement as parameters
       $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
       $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
       $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);

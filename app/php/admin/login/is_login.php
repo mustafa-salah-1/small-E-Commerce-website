@@ -16,8 +16,7 @@ if (empty($username_err) && empty($password_err)) {
             $username = $row["admin_name"];
             $hashed_password = $row["admin_password"];
              
-            // if (password_verify($password, $hashed_password)) {
-                if ( $password === $hashed_password) {  
+            if (password_verify($password, $hashed_password)) {
                  
                 session_regenerate_id(true);
                  
