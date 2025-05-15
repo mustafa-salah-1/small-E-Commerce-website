@@ -15,17 +15,14 @@ if (!$customer) {
   exit();
 }
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $customer_name = $_POST['customer_name'];
   $customer_email = $_POST['customer_email'];
   $customer_phone = $_POST['customer_phone'];
   $new_password = $_POST['new_password'];
 
-  // Update customer information
   updateCustomer($_SESSION['customer_id'], $customer_name, $customer_email, $customer_phone, $new_password);
 
-  // Redirect to the same page to see changes
   header("Location: " . $_SERVER['PHP_SELF']);
   exit();
 }
@@ -96,7 +93,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
 
 <script>
-  // Activate the edit profile modal when the edit button is clicked
   document.addEventListener('DOMContentLoaded', function() {
     const editProfileBtn = document.querySelector('.btn-neon.icon-btn i.fa-user-edit').parentElement;
     editProfileBtn.addEventListener('click', function() {

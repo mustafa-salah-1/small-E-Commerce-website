@@ -18,14 +18,13 @@ function getCartByCustomerId($customerId)
 {
     global $connect;
     try {
-        $sql = "SELECT cart.*, products.* FROM cart 
-            JOIN products ON products.id = cart.product_id 
-            WHERE cart.id = :cart_id
-            AND cart.customer_id = :customer_id";
+        $sql = "SELECT carts.*, products.product_name 
+        FROM carts JOIN products ON products.id = carts.product_id 
+        WHERE carts.customer_id = :customer_id";
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':customer_id', $customerId, PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         error_log("Error getting cart by customer ID: " . $e->getMessage());
         return false;

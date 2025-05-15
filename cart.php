@@ -10,6 +10,10 @@ include "check.php";
 
 include 'components/app.php';
 include "app/php/admin/cart/functions.php";
+
+
+$carts = getCartByCustomerId($_SESSION['customer_id']);
+var_dump($carts);
 ?>
 
 <!-- Cart Container -->
