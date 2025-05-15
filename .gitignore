@@ -1,3 +1,4 @@
-public/product-images
-public/brands
-public/categories
+public/product-images/main/*
+public/product-images/images/*
+public/brands/*
+public/categories/*
