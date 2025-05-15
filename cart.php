@@ -3,14 +3,13 @@
 $title_page = "Shopping Cart";
 $file_css = "cart.css";
 
-include "app/php/config/config.php";
-include 'components/app.php';
-include "app/php/admin/product/functions.php";
-include "app/php/admin/product_image/functions.php";
 
-// Get cart items - you'll need to implement this function
-// For now assuming it returns an array of products with quantity
-$cartItems = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+include "app/php/config/config.php";
+
+include "check.php";
+
+include 'components/app.php';
+include "app/php/admin/cart/functions.php";
 ?>
 
 <!-- Cart Container -->

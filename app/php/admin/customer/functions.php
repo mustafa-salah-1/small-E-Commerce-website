@@ -53,3 +53,54 @@ function getCustomerOrders($customerId) {
         return false;
     }
 }
+
+function updateCustomer($customerId, $name, $email, $phone, $password) {
+ 
+    global $connect;
+    try {
+        $sql = "UPDATE customers SET ";
+        $updateFields = [];
+        $params = [];
+        
+        if ($name !== null) {
+            $updateFields[] = "customer_name = :name";
+            $params[':name'] = $name;
+        }
+        
+        if ($email !== null) {
+            $updateFields[] = "customer_email = :email";
+            $params[':email'] = $email;
+        }
+        
+        if ($phone !== null) {
+            $updateFields[] = "customer_phone = :phone";
+            $params[':phone'] = $phone;
+        }
+        
+        if (!empty($password)) {
+            $updateFields[] = "customer_password = :password";
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $params[':password'] = $hashedPassword;
+        }
+        
+        if (empty($updateFields)) {
+            return true;
+        }
+        
+        $sql .= implode(", ", $updateFields);
+        $sql .= " WHERE id = :customer_id";
+        
+        $stmt = $connect->prepare($sql);
+        
+        foreach ($params as $key => $value) {
+            $stmt->bindValue($key, $value);
+        }
+        
+        $stmt->bindValue(':customer_id', $customerId, PDO::PARAM_INT);
+        
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        error_log("Error updating customer: " . $e->getMessage());
+        return false;
+    }
+}

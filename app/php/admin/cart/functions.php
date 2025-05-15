@@ -14,7 +14,6 @@ function getAllCartCount()
     }
 }
 
-
 function getCartByCustomerId($customerId)
 {
     global $connect;
@@ -39,7 +38,19 @@ function addToCart($productId)
         return false;
     } else {
         global $connect;
+
+        $sq = "SELECT COUNT(*) FROM carts WHERE product_id = :id AND customer_id = :customer_id";
+        $st = $connect->prepare($sq);
+        $st->bindParam(':id', $productId, PDO::PARAM_INT);
+        $customerId = $_SESSION['customer_id'];
+        $st->bindParam(':customer_id', $customerId, PDO::PARAM_INT);
+
         try {
+            $st->execute();
+            if ($st->fetchColumn() > 0) {
+                return false;
+            }
+
             $sql = "INSERT INTO carts (product_id, customer_id, quantity) VALUES (:product_id, :customer_id, :quantity)";
             $stmt = $connect->prepare($sql);
             $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
