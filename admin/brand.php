@@ -1,6 +1,6 @@
 <?php
-require "check.php";
 include "../app/php/config/config.php";
+require "check.php";
 include "../app/php/admin/brand/functions.php";
 
 if (isset($_POST['delete_brand'])) {

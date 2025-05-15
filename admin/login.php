@@ -1,14 +1,13 @@
 <?php
+
  
-session_start();
- 
+require_once "../app/php/config/config.php";
+
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: dashboard.php");
     exit;
 }
- 
-require_once "../app/php/config/config.php";
- 
+
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
  

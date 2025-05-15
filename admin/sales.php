@@ -1,6 +1,6 @@
 <?php
-require "check.php";
 include "../app/php/config/config.php";
+require "check.php";
 include "../app/php/admin/invoice/functions.php";
 include "../app/php/admin/invoice_product/functions.php";
 

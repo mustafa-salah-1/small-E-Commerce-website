@@ -1,8 +1,8 @@
 <?php
 
-include "check.php";
 
 include "../app/php/config/config.php";
+include "check.php";
 
 include "../app/php/admin/customer/functions.php";
 include "../app/php/admin/invoice/functions.php";
