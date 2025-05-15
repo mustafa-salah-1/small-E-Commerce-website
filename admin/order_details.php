@@ -86,7 +86,6 @@ include "../components/admin/app.php";
                             </div>
                             <div class="card-body">
                                 <p><strong>Customer Name:</strong> <?php echo $invoice['customer_name']; ?></p>
-                                <p><strong>Phone:</strong> <?php echo $invoice['customer_phone']; ?></p>
                                 <p><strong>Email:</strong> <?php echo $invoice['customer_email']; ?></p>
                                 <?php if (isset($invoice['customer_phone'])): ?>
                                     <p><strong>Phone:</strong> <?php echo $invoice['customer_phone']; ?></p>
@@ -189,7 +188,6 @@ include "../components/admin/app.php";
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Check if location data exists
         <?php
         $location = explode(',', $invoice['location']);
         $latitude = isset($location[0]) ? trim($location[0]) : 0;

@@ -8,7 +8,7 @@ include "app/php/config/config.php";
 include "components/app.php"; 
 
 
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+if(isset($_SESSION["loggedinCustomer"]) && $_SESSION["loggedinCustomer"] === true){
     header("location: index.php");
     exit;
 }
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($password, $hashed_password)) {
               session_start();
 
-              $_SESSION["loggedin"] = true;
+              $_SESSION["loggedinCustomer"] = true;
               $_SESSION["customer_id"] = $id;
               $_SESSION["customer_email"] = $email;
               $_SESSION["customer_name"] = $row["customer_name"];
@@ -104,4 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </div>
 </div>
 
-<?php include 'components/footer.php'; ?>
+</body>
+
+ </html>

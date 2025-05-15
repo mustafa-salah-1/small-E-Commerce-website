@@ -32,17 +32,15 @@ $order_items = getInvoiceProductsByInvoiceId($order_id);
 <div class="profile-container container">
     <div class="profile-card">
         <h2 class="mb-4">Order #<?php echo $invoice['id']; ?></h2>
-        
+
         <div class="row mb-4">
             <div class="col-md-6">
                 <h5>Order Information</h5>
                 <p><strong>Order Date:</strong> <?php echo date('M d, Y', strtotime($invoice['created_at'])); ?></p>
-                <p><strong>Status:</strong> 
-                    <span class="badge bg-<?php 
-                        echo strtolower($invoice['status']) == 'paid' ? 'success' : 
-                                (strtolower($invoice['status']) == 'pending' ? 'warning' : 
-                                (strtolower($invoice['status']) == 'cancelled' ? 'danger' : 'info')); 
-                    ?>">
+                <p><strong>Status:</strong>
+                    <span class="badge bg-<?php
+                                            echo strtolower($invoice['status']) == 'paid' ? 'success' : (strtolower($invoice['status']) == 'pending' ? 'warning' : (strtolower($invoice['status']) == 'cancelled' ? 'danger' : 'info'));
+                                            ?>">
                         <?php echo $invoice['status']; ?>
                     </span>
                 </p>
@@ -54,37 +52,37 @@ $order_items = getInvoiceProductsByInvoiceId($order_id);
         <h5>Order Items</h5>
         <div style="display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;">
             <table class="table table-dark table-hover table-sm">
-            <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Product</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php 
-                $total = 0;
-                foreach ($order_items as $index => $item): 
-                $subtotal = $item['price'] * $item['quantity'];
-                $total += $subtotal;
-                ?>
-                <tr>
-                <td><?php echo $index + 1; ?></td>
-                <td><?php echo $item['product_name']; ?></td>
-                <td><?php echo $item['quantity']; ?></td>
-                <td><?php echo 'IQD ' . number_format($item['price'], 2); ?></td>
-                <td><?php echo 'IQD ' . number_format($subtotal, 2); ?></td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-            <tfoot>
-                <tr>
-                <td colspan="4" class="text-end"><strong>Total:</strong></td>
-                <td><strong><?php echo 'IQD ' . number_format($total, 2); ?></strong></td>
-                </tr>
-            </tfoot>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $total = 0;
+                    foreach ($order_items as $index => $item):
+                        $subtotal = $item['price'] * $item['quantity'];
+                        $total += $subtotal;
+                    ?>
+                        <tr>
+                            <td><?php echo $index + 1; ?></td>
+                            <td><?php echo $item['product_name']; ?></td>
+                            <td><?php echo $item['quantity']; ?></td>
+                            <td><?php echo 'IQD ' . number_format($item['price'], 2); ?></td>
+                            <td><?php echo 'IQD ' . number_format($subtotal, 2); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4" class="text-end"><strong>Total:</strong></td>
+                        <td><strong><?php echo 'IQD ' . number_format($total, 2); ?></strong></td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
 
@@ -96,4 +94,6 @@ $order_items = getInvoiceProductsByInvoiceId($order_id);
     </div>
 </div>
 
-<?php include 'components/footer.php'; ?>
+</body>
+
+</html>

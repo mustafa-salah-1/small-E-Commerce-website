@@ -4,6 +4,8 @@
 $title_page = "About Us";
 $file_css = "about.css";
 
+include "app/php/config/config.php";
+
 include "components/app.php"; ?>
  
  

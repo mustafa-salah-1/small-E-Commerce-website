@@ -107,7 +107,7 @@ include "../components/admin/app.php";
                                                 <td><?php echo $order['id']; ?></td>
                                                 <td><?php echo date('Y-m-d', strtotime($order['created_at'])); ?></td>
                                                 <td><?php echo $order['quantity']; ?></td>
-                                                <td>$<?php echo number_format($order['total_price'], 2); ?></td>
+                                                <td>IQD <?php echo number_format($order['total_price'], 2); ?></td>
                                                 <td>
                                                     <span class="badge bg-<?php echo getInvoiceStatusClass($order['status']); ?>">
                                                         <?php echo $order['status']; ?>

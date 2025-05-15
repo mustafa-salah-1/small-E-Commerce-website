@@ -26,13 +26,19 @@ foreach ($categories as $category) {
 <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="public/img/w2.jpg" class="d-block w-100" alt="Slide 1" />
+      <a href="product.php">
+        <img src="public/img/w2.jpg" class="d-block w-100" alt="Slide 1" />
+      </a>
     </div>
     <div class="carousel-item">
-      <img src="public/img/w1.webp" class="d-block w-100" alt="Slide 2" />
+      <a href="product.php">
+        <img src="public/img/w1.webp" class="d-block w-100" alt="Slide 2" />
+      </a>
     </div>
     <div class="carousel-item">
-      <img src="public/img/w3.jpg" class="d-block w-100" alt="Slide 3" />
+      <a href="product.php">
+        <img src="public/img/w3.jpg" class="d-block w-100" alt="Slide 3" />
+      </a>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
