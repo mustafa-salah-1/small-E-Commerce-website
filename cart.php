@@ -12,11 +12,36 @@ include 'components/app.php';
 include "app/php/admin/cart/functions.php";
 
 
+if (isset($_POST['delete'])) {
+    $cartId = $_POST['id'];
+    deleteCart($cartId);
+    header('Location: cart.php');
+}
+
+if (isset($_POST['increase'])) {
+    $cartId = $_POST['id'];
+    $quantity = $_POST['quantity'];
+    updateCart($cartId, $quantity + 1);
+    header('Location: cart.php');
+}
+
+
+if (isset($_POST['decrease'])) {
+    $cartId = $_POST['id'];
+    $quantity = $_POST['quantity'];
+    updateCart($cartId, $quantity - 1);
+    header('Location: cart.php');
+}
+
+
+
+
+
 $carts = getCartByCustomerId($_SESSION['customer_id']);
-var_dump($carts);
+
 ?>
 
-<!-- Cart Container -->
+<!-- Cart  -->
 <div class="cart-container">
     <!-- Back Button -->
     <a class="back-btn" href="index.php">
@@ -25,7 +50,7 @@ var_dump($carts);
 
     <h1 class="cart-title">Your Shopping Cart</h1>
 
-    <?php if (empty($cartItems)): ?>
+    <?php if (empty($carts)): ?>
         <div class="empty-cart">
             <i class="bi bi-cart-x"></i>
             <p>Your cart is empty</p>
@@ -34,37 +59,42 @@ var_dump($carts);
     <?php else: ?>
         <!-- Cart Items -->
         <div class="cart-items">
-            <?php 
+            <?php
             $total = 0;
-            foreach ($cartItems as $item): 
-                $product = getProductById($item['product_id']);
-                $itemTotal = $product['product_price_sell'] * $item['quantity'];
+            foreach ($carts as $item):
+                $itemTotal = $item['product_price_sell'] * $item['quantity'];
                 $total += $itemTotal;
             ?>
                 <div class="cart-item">
                     <div class="item-image">
-                        <img src="public/product-images/main/<?= $product['product_image'] ?>" alt="<?= $product['product_name'] ?>">
+                        <img src="public/product-images/main/<?= $item['product_image'] ?>" alt="<?= $item['product_name'] ?>">
                     </div>
                     <div class="item-details">
-                        <h3><?= $product['product_name'] ?></h3>
-                        <p class="item-price">IQD <?= $product['product_price_sell'] ?></p>
+                        <h3><?= $item['product_name'] ?></h3>
+                        <p class="item-price">IQD <?= $item['product_price_sell'] ?></p>
                     </div>
                     <div class="item-quantity">
-                        <button onclick="updateQuantity(<?= $item['product_id'] ?>, <?= $item['quantity'] - 1 ?>)" <?= $item['quantity'] <= 1 ? 'disabled' : '' ?>>-</button>
-                        <span><?= $item['quantity'] ?></span>
-                        <button onclick="updateQuantity(<?= $item['product_id'] ?>, <?= $item['quantity'] + 1 ?>)">+</button>
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="quantity-controls">
+                            <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                            <input type="hidden" name="quantity" value="<?= $item['quantity'] ?>">
+                            <button type="submit" name="decrease" <?= $item['quantity'] <= 1 ? 'disabled' : '' ?>>-</button>
+                            <span><?= $item['quantity'] ?></span>
+                            <button type="submit" name="increase" <?= $item['quantity'] >= $item['product_quantity'] ? 'disabled' : '' ?>>+</button>
+                        </form>
                     </div>
                     <div class="item-total">
                         <p>IQD <?= $itemTotal ?></p>
                     </div>
                     <div class="item-remove">
-                        <button onclick="removeItem(<?= $item['product_id'] ?>)"><i class="bi bi-trash"></i></button>
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="remove-form">
+                            <input type="hidden" name="id" value="<?= $item['id'] ?>">
+                            <button type="submit" name="delete" class="bg-danger text-white p-1 rounded"><i class="bi bi-trash"></i> delete</button>
+                        </form>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
 
-        <!-- Cart Summary -->
         <div class="cart-summary">
             <div class="summary-row">
                 <span>Subtotal</span>
@@ -85,42 +115,6 @@ var_dump($carts);
     <?php endif; ?>
 </div>
 
-<script>
-    function updateQuantity(productId, newQuantity) {
-        if (newQuantity < 1) return;
-        
-        // AJAX call to update cart quantity
-        fetch('update_cart.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `product_id=${productId}&quantity=${newQuantity}`
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.reload();
-            }
-        });
-    }
-
-    function removeItem(productId) {
-        // AJAX call to remove item from cart
-        fetch('remove_from_cart.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `product_id=${productId}`
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                window.location.reload();
-            }
-        });
-    }
-</script>
 </body>
+
 </html>

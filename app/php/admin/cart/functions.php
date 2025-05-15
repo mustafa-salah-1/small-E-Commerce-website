@@ -18,7 +18,8 @@ function getCartByCustomerId($customerId)
 {
     global $connect;
     try {
-        $sql = "SELECT carts.*, products.product_name 
+        $sql = "SELECT carts.*, products.product_name , products.product_price_sell ,
+        products.product_image , products.product_quantity
         FROM carts JOIN products ON products.id = carts.product_id 
         WHERE carts.customer_id = :customer_id";
         $stmt = $connect->prepare($sql);
@@ -64,17 +65,31 @@ function addToCart($productId)
     }
 }
 
-function updateCart($cartId, $cartName, $cartImage)
+function updateCart($cartId,$quantity)
 {
     global $connect;
     try {
-        $sql = "UPDATE carts SET brand_name = :brand_name, brand_image = :brand_image WHERE id = :cart_id";
+        $sql = "UPDATE carts SET quantity = :quantity WHERE id = :cart_id";
         $stmt = $connect->prepare($sql);
         $stmt->bindParam(':cart_id', $cartId, PDO::PARAM_INT);
-        $stmt->bindParam(':brand_name', $cartName, PDO::PARAM_STR);
-        $stmt->bindParam(':brand_image', $cartImage, PDO::PARAM_STR);
+        $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
         $stmt->execute();
     } catch (PDOException $e) {
         error_log("Error updating cart: " . $e->getMessage());
+    }
+}
+
+function deleteCart($cartId)
+{
+    global $connect;
+    try {
+        $sql = "DELETE FROM carts WHERE id = :cart_id";
+        $stmt = $connect->prepare($sql);
+        $stmt->bindParam(':cart_id', $cartId, PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+    } catch (PDOException $e) {
+        error_log("Error deleting cart: " . $e->getMessage());
+        return false;
     }
 }

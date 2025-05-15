@@ -2,7 +2,10 @@
     <div class="container-fluid px-2">
         <a class="navbar-brand fs-4" href="index.php">
             <img src="public/img/ll.png" alt="Logo" height="30"
-                class="d-inline-block me-2">GAME<span style="color: #00aaff">STORE</span>
+                class="d-inline-block me-2">
+                <span class="d-none d-md-inline">
+                    GAME<span style="color: #00aaff">STORE</span>
+                </span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
