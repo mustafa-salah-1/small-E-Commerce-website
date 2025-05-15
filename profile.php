@@ -8,6 +8,7 @@ include "check.php";
 include 'components/app.php';
 
 include "app/php/admin/customer/functions.php";
+include "app/php/admin/invoice/functions.php";
 
 $customer = getCustomerById($_SESSION['customer_id']);
 if (!$customer) {
@@ -54,6 +55,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- <button class="btn btn-neon icon-btn"><i class="fas fa-heart"></i> Favourite</button> -->
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Customer Invoices -->
+<div class="profile-container">
+  <div class="profile-card">
+    <h3 class="mb-4">Your Invoices</h3>
+    
+    <?php
+    // Get customer's invoices
+    $invoices = getInvoicesByCustomerId($_SESSION['customer_id']);
+    
+    if (empty($invoices)) {
+      echo '<div class="alert alert-info">You have no invoices yet.</div>';
+    } else {
+    ?>
+      <div class="table-responsive">
+        <table class="table table-dark table-hover">
+          <thead>
+            <tr>
+              <th>Invoice #</th>
+              <th>Date</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($invoices as $index => $invoice) : ?>
+              <tr>
+                <td><?php echo $index + 1; ?></td>
+                <td><?php echo date('M d, Y', strtotime($invoice['created_at'])); ?></td>
+                <td><?php echo 'IQD ' . number_format($invoice['total_price'], 2); ?></td>
+                <td>
+                  <?php 
+                  $statusClass = '';
+                  switch (strtolower($invoice['status'])) {
+                    case 'paid':
+                      $statusClass = 'success';
+                      break;
+                    case 'pending':
+                      $statusClass = 'warning';
+                      break;
+                    case 'cancelled':
+                      $statusClass = 'danger';
+                      break;
+                    default:
+                      $statusClass = 'info';
+                  }
+                  ?>
+                  <span class="badge bg-<?php echo $statusClass; ?>">
+                    <?php echo $invoice['status']; ?>
+                  </span>
+                </td>
+                <td>
+                  <a href="order-details.php?id=<?php echo $invoice['id']; ?>" class="btn btn-sm btn-neon">
+                    <i class="fas fa-eye"></i> View
+                  </a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+        </table>
+      </div>
+    <?php } ?>
   </div>
 </div>
 
