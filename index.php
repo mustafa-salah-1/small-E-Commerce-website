@@ -6,11 +6,20 @@ $file_css = "home.css";
 include 'components/app.php';
 include "app/php/config/config.php";
 include "app/php/admin/product/functions.php";
+include "app/php/admin/category/functions.php";
 
-$controllers = getProductsByCategory("controller");
-$keyboards = getProductsByCategory("keyboard");
-$mouses = getProductsByCategory("mouse");
+$categories = getAllCategories();
 
+$data = [];
+
+foreach ($categories as $category) {
+  $category_name = $category['category_name'];
+  $products = getProductsByCategory($category_name);
+
+  if (!empty($products)) {
+    $data[$category_name] = $products;
+  }
+}
 
 ?>
 
@@ -37,20 +46,20 @@ $mouses = getProductsByCategory("mouse");
 </div>
 
 <div>
-  <?php if (count($controllers) > 0) : ?>
+  <?php foreach ($data as $category_name => $products): ?>
     <section id="products" class="container-xl py-5">
-      <h2 class="text-center mb-5 section-heading">Controller</h2>
+      <h2 class="text-center mb-5 section-heading"><?= htmlspecialchars($category_name) ?></h2>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
-        <?php foreach ($controllers as $controller) : ?>
-          <a href="show_product.php?id=<?= $controller['id'] ?>" class="text-decoration-none">
+        <?php foreach ($products as $product): ?>
+          <a href="show_product.php?id=<?= $product['id'] ?>" class="text-decoration-none">
             <div class="col">
-              <div class="card">
-                <img src="public/product-images/main/<?= $controller['product_image'] ?>" class="card-img-top" alt="<?= $controller['product_name'] ?>">
-                <div class="card-body">
-                  <h5 class="card-title text-truncate"><?= $controller['product_name'] ?></h5>
-                  <p class="card-text text-truncate"><?= $controller['product_content'] ?></p>
-                  <div class="d-flex justify-content-between align-items-center" style="margin-top: auto;">
-                    <span class="price-tag ">IQD <?= $controller['product_price_sell'] ?></span>
+              <div class="card h-100">
+                <img src="public/product-images/main/<?= $product['product_image'] ?>" class="card-img-top" alt="<?= htmlspecialchars($product['product_name']) ?>">
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title text-truncate"><?= htmlspecialchars($product['product_name']) ?></h5>
+                  <p class="card-text text-truncate"><?= htmlspecialchars($product['product_content']) ?></p>
+                  <div class="d-flex justify-content-between align-items-center mt-auto">
+                    <span class="price-tag">IQD <?= number_format($product['product_price_sell']) ?></span>
                   </div>
                 </div>
               </div>
@@ -59,55 +68,7 @@ $mouses = getProductsByCategory("mouse");
         <?php endforeach; ?>
       </div>
     </section>
-  <?php endif; ?>
-
-  <?php if (count($keyboards) > 0) : ?>
-    <section id="products" class="container-xl py-5">
-      <h2 class="text-center mb-5 section-heading">Keyboard</h2>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
-        <?php foreach ($keyboards as $keyboard) : ?>
-          <a href="show_product.php?id=<?= $keyboard['id'] ?>" class="text-decoration-none">
-            <div class="col">
-              <div class="card">
-                <img src="public/product-images/main/<?= $keyboard['product_image'] ?>" class="card-img-top" alt="<?= $keyboard['product_name'] ?>">
-                <div class="card-body">
-                  <h5 class="card-title text-truncate"><?= $keyboard['product_name'] ?></h5>
-                  <p class="card-text text-truncate"><?= $keyboard['product_content'] ?></p>
-                  <div class="d-flex justify-content-between align-items-center" style="margin-top: auto;">
-                    <span class="price-tag ">IQD <?= $keyboard['product_price_sell'] ?></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        <?php endforeach; ?>
-      </div>
-    </section>
-  <?php endif; ?>
-
-  <?php if (count($mouses) > 0) : ?>
-    <section id="products" class="container-xl py-5">
-      <h2 class="text-center mb-5 section-heading">Mouse</h2>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
-        <?php foreach ($mouses as $mouse) : ?>
-          <a href="show_product.php?id=<?= $mouse['id'] ?>" class="text-decoration-none">
-            <div class="col">
-              <div class="card">
-                <img src="public/product-images/main/<?= $mouse['product_image'] ?>" class="card-img-top" alt="<?= $mouse['product_name'] ?>">
-                <div class="card-body">
-                  <h5 class="card-title text-truncate"><?= $mouse['product_name'] ?></h5>
-                  <p class="card-text text-truncate"><?= $mouse['product_content'] ?></p>
-                  <div class="d-flex justify-content-between align-items-center" style="margin-top: auto;">
-                    <span class="price-tag ">IQD <?= $mouse['product_price_sell'] ?></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        <?php endforeach; ?>
-      </div>
-    </section>
-  <?php endif; ?>
+  <?php endforeach; ?>
 </div>
 
 <?php include 'components/footer.php'; ?>
