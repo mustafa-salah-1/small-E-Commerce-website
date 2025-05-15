@@ -33,9 +33,11 @@
                         <li><a class="dropdown-item">Chairs</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cart.php">Cart</a>
-                </li>
+                <?php if(isset($_SESSION['customer_name'])) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.php">Cart</a>
+                    </li>
+                <?php } ?>
             </ul>
 
 

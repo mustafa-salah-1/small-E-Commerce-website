@@ -6,6 +6,11 @@ $file_css = "account.css";
 include "app/php/config/config.php";
 include "components/app.php";
 
+if(isset($_SESSION["loggedin_customer"]) || $_SESSION["loggedin_customer"] === true) {
+  header("location: index.php");
+  exit;
+}
+
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $email = "";
 $username_err = $password_err = $confirm_password_err = $email_err = "";
