@@ -194,3 +194,55 @@ function decreaseProductQuantity($productId, $amount)
         return false;
     }
 }
+
+
+function getFilteredProducts($brand_id = null, $category_id = null, $search_term = null)
+{
+    global $connect;
+    
+    if (!$connect) {
+        error_log("Database connection not established");
+        return false;
+    }
+    
+    try {
+        $sql = "SELECT p.*, c.category_name, b.brand_name 
+                FROM products p
+                LEFT JOIN categories c ON p.category_id = c.id
+                LEFT JOIN brands b ON p.brand_id = b.id
+                WHERE 1=1";
+        
+        $params = [];
+        
+        if ($brand_id) {
+            $sql .= " AND p.brand_id = :brand_id";
+            $params[':brand_id'] = $brand_id;
+        }
+        
+        if ($category_id) {
+            $sql .= " AND p.category_id = :category_id";
+            $params[':category_id'] = $category_id;
+        }
+        
+        if ($search_term) {
+            $sql .= " AND (p.product_name LIKE :search_term OR p.product_content LIKE :search_term)";
+            $params[':search_term'] = '%' . $search_term . '%';
+        }
+        
+        $stmt = $connect->prepare($sql);
+        
+        foreach ($params as $key => $value) {
+            if (is_int($value)) {
+                $stmt->bindValue($key, $value, PDO::PARAM_INT);
+            } else {
+                $stmt->bindValue($key, $value, PDO::PARAM_STR);
+            }
+        }
+        
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        error_log("Error getting filtered products: " . $e->getMessage());
+        return false;
+    }
+}
