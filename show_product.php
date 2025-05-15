@@ -12,14 +12,14 @@ include "app/php/admin/cart/functions.php";
 $product = getProductById($_GET['id']);
 $images = getImageByIdProduct($_GET['id']);
 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $productId = $_POST['product_id'];
     if (!isset($_SESSION['customer_id'])) {
-        header("Location: login.php");
+        echo '<script>window.location.href = "login.php";</script>';
         exit();
     } else {
         addToCart($productId);
-        header("Location: cart.php");
+        echo '<script>window.location.href = "cart.php";</script>';
         exit();
     }
 }
@@ -145,9 +145,7 @@ if (!$product) {
             });
         }
     }
-</script>
 
-<script>
     function searchRedirect(event) {
         /* search : game , headset , discount pages */
         event.preventDefault(); // Stop the default form submission
@@ -165,6 +163,7 @@ if (!$product) {
         }
     }
 </script>
+
 </body>
 
 </html>
