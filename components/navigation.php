@@ -40,21 +40,22 @@
 
 
             <!-- Profile Icon as Link -->
-            <div class="nav-item">
+            <div class="nav-item d-flex align-items-center">
                 <?php
 
-                if (isset($_SESSION['user_id'])) {
-                    ?>
+                if (isset($_SESSION['customer_name'])) {
+                ?>
                     <a class="nav-link d-flex align-items-center" href="profile.php">
                         <i class="fas fa-user-circle fa-2x me-2"></i>
+                        <?php echo htmlspecialchars($_SESSION['customer_name']); ?>
                     </a>
-                    <?php
+                    <a class="btn btn-danger" onclick="confirm('Are you sure you want to logout?')" href="logout.php">Logout</a>
+                <?php
                 } else {
-                    // User is not logged in, show login and register buttons
-                    ?>
+                ?>
                     <a class="btn btn-warning me-2" href="login.php">Login</a>
                     <a class="btn btn-warning" href="register.php">Register</a>
-                    <?php
+                <?php
                 }
                 ?>
             </div>

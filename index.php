@@ -3,8 +3,8 @@
 $title_page = "Game Store Page";
 $file_css = "home.css";
 
-include 'components/app.php';
 include "app/php/config/config.php";
+include 'components/app.php';
 include "app/php/admin/product/functions.php";
 include "app/php/admin/category/functions.php";
 

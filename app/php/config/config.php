@@ -13,3 +13,4 @@ try {
 } catch (PDOException $e) {
     die("ERROR: Could not connect. " . $e->getMessage());
 }
+session_start();
