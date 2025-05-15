@@ -35,16 +35,22 @@ function getCartByCustomerId($customerId)
 
 function addToCart($productId)
 {
-    global $connect;
-    try {
-        $sql = "INSERT INTO carts (product_id, customer_id, quantity) VALUES (:product_id, :customer_id, :quantity)";
-        $stmt = $connect->prepare($sql);
-        $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
-        $stmt->bindParam(':customer_id', $_SESSION['id'], PDO::PARAM_INT);
-        $stmt->bindParam(':quantity', 1, PDO::PARAM_INT);
-        $stmt->execute();
-    } catch (PDOException $e) {
-        error_log("Error adding to cart: " . $e->getMessage());
+    if (!isset($_SESSION['customer_id'])) {
+        return false;
+    } else {
+        global $connect;
+        try {
+            $sql = "INSERT INTO carts (product_id, customer_id, quantity) VALUES (:product_id, :customer_id, :quantity)";
+            $stmt = $connect->prepare($sql);
+            $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
+            $customerId = $_SESSION['customer_id'];
+            $stmt->bindParam(':customer_id', $customerId, PDO::PARAM_INT);
+            $quantity = 1;
+            $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Error adding to cart: " . $e->getMessage());
+        }
     }
 }
 

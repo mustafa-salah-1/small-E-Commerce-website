@@ -14,8 +14,17 @@ $images = getImageByIdProduct($_GET['id']);
 
 if(isset($_POST['submit'])) {
     $productId = $_POST['product_id'];
-    addToCart($productId);
-    header("Location: cart.php");
+    if (!isset($_SESSION['customer_id'])) {
+        header("Location: login.php");
+        exit();
+    } else {
+        addToCart($productId);
+        header("Location: cart.php");
+        exit();
+    }
+}
+if (!$product) {
+    echo "<h1>Product not found</h1>";
     exit();
 }
 ?>

@@ -5,10 +5,14 @@ $file_css = "login.css";
 
 include "app/php/config/config.php";
 
-if(isset($_SESSION["loggedin_customer"]) || $_SESSION["loggedin_customer"] === true) {
-  header("location: index.php");
-  exit;
+include "components/app.php"; 
+
+
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: index.php");
+    exit;
 }
+
 
 
 $email = $password = "";
@@ -46,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (password_verify($password, $hashed_password)) {
               session_start();
 
-              $_SESSION["loggedin_customer"] = true;
+              $_SESSION["loggedin"] = true;
               $_SESSION["customer_id"] = $id;
               $_SESSION["customer_email"] = $email;
               $_SESSION["customer_name"] = $row["customer_name"];
@@ -68,8 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Close connection
   unset($connect);
 }
-
-include "components/app.php"; ?>
+?>
 
 
 <div class="container d-flex py-5 justify-content-center align-items-center">

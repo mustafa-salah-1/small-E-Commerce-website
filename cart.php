@@ -3,8 +3,8 @@
 $title_page = "Shopping Cart";
 $file_css = "cart.css";
 
-include 'components/app.php';
 include "app/php/config/config.php";
+include 'components/app.php';
 include "app/php/admin/product/functions.php";
 include "app/php/admin/product_image/functions.php";
 
