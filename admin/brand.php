@@ -85,7 +85,7 @@ include "../components/admin/app.php";
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 bg-light sidebar">
+        <div class="col-md-2 p-1 sidebar">
             <?php include "../components/admin/sidebar.php"; ?>
         </div>
 
@@ -112,7 +112,7 @@ include "../components/admin/app.php";
                 <?php endif; ?>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -161,22 +161,22 @@ include "../components/admin/app.php";
 <!-- Add Brand Modal -->
 <div class="modal fade" id="addBrandModal" tabindex="-1" aria-labelledby="addBrandModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
                 <h5 class="modal-title" id="addBrandModalLabel">Add New Brand</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="brand_name" class="form-label">Brand Name</label>
-                        <input type="text" class="form-control" id="brand_name" name="brand_name" required>
+                        <input type="text" class="form-control bg-secondary text-light" id="brand_name" name="brand_name" required>
                     </div>
                     <div class="mb-3">
                         <label for="brand_image" class="form-label">Brand Logo</label>
-                        <input type="file" class="form-control" id="brand_image" name="brand_image">
+                        <input type="file" class="form-control bg-secondary text-light" id="brand_image" name="brand_image">
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer border-secondary">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" name="add_brand" class="btn btn-primary">Add Brand</button>
                     </div>
@@ -189,10 +189,10 @@ include "../components/admin/app.php";
 <!-- Update Brand Modal -->
 <div class="modal fade" id="updateBrandModal" tabindex="-1" aria-labelledby="updateBrandModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
                 <h5 class="modal-title" id="updateBrandModalLabel">Update Brand</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
@@ -200,15 +200,15 @@ include "../components/admin/app.php";
                     <input type="hidden" name="current_image" id="current_image">
                     <div class="mb-3">
                         <label for="update_brand_name" class="form-label">Brand Name</label>
-                        <input type="text" class="form-control" id="update_brand_name" name="brand_name" required>
+                        <input type="text" class="form-control bg-secondary text-light" id="update_brand_name" name="brand_name" required>
                     </div>
                     <div class="mb-3">
                         <label for="update_brand_image" class="form-label">Brand Logo</label>
-                        <input type="file" class="form-control" id="update_brand_image" name="update_brand_image">
+                        <input type="file" class="form-control bg-secondary text-light" id="update_brand_image" name="update_brand_image">
                         <small class="form-text text-muted">Leave empty to keep current logo</small>
                         <div id="current_image_preview" class="mt-2"></div>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer border-secondary">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" name="update_brand" class="btn btn-primary">Update Brand</button>
                     </div>

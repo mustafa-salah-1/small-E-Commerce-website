@@ -85,7 +85,7 @@ include "../components/admin/app.php";
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 bg-light sidebar">
+        <div class="col-md-2 p-1 sidebar">
             <?php include "../components/admin/sidebar.php"; ?>
         </div>
 
@@ -110,7 +110,7 @@ include "../components/admin/app.php";
                 <?php endif; ?>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -159,23 +159,23 @@ include "../components/admin/app.php";
 <!-- Add Category Modal -->
 <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
                 <h5 class="modal-title" id="addCategoryModalLabel">Add New Category</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="category_name" class="form-label">Category Name</label>
-                        <input type="text" class="form-control" id="category_name" name="category_name" required>
+                        <input type="text" class="form-control bg-dark text-light border-secondary" id="category_name" name="category_name" required>
                     </div>
                     <div class="mb-3">
                         <label for="category_image" class="form-label">Category Image</label>
-                        <input type="file" class="form-control" id="category_image" name="category_image">
+                        <input type="file" class="form-control bg-dark text-light border-secondary" id="category_image" name="category_image">
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-footer border-secondary">
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
                         <button type="submit" name="add_category" class="btn btn-primary">Add Category</button>
                     </div>
                 </form>
@@ -187,10 +187,10 @@ include "../components/admin/app.php";
 <!-- Update Category Modal -->
 <div class="modal fade" id="updateCategoryModal" tabindex="-1" aria-labelledby="updateCategoryModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
                 <h5 class="modal-title" id="updateCategoryModalLabel">Update Category</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
@@ -198,16 +198,16 @@ include "../components/admin/app.php";
                     <input type="hidden" name="current_image" id="current_image">
                     <div class="mb-3">
                         <label for="update_category_name" class="form-label">Category Name</label>
-                        <input type="text" class="form-control" id="update_category_name" name="category_name" required>
+                        <input type="text" class="form-control bg-dark text-light border-secondary" id="update_category_name" name="category_name" required>
                     </div>
                     <div class="mb-3">
                         <label for="update_category_image" class="form-label">Category Image</label>
-                        <input type="file" class="form-control" id="update_category_image" name="update_category_image">
+                        <input type="file" class="form-control bg-dark text-light border-secondary" id="update_category_image" name="update_category_image">
                         <small class="form-text text-muted">Leave empty to keep current image</small>
                         <div id="current_image_preview" class="mt-2"></div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-footer border-secondary">
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
                         <button type="submit" name="update_category" class="btn btn-primary">Update Category</button>
                     </div>
                 </form>

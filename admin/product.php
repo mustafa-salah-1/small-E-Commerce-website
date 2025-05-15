@@ -78,7 +78,7 @@ include "../components/admin/app.php";
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 bg-light sidebar">
+        <div class="col-md-2 p-1 sidebar">
             <?php include "../components/admin/sidebar.php"; ?>
         </div>
 
@@ -107,7 +107,7 @@ include "../components/admin/app.php";
                 <?php endif; ?>
             </div>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -163,10 +163,10 @@ include "../components/admin/app.php";
 <!-- Add Product Modal -->
 <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 90%; width: 90%;">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
                 <h5 class="modal-title" id="addProductModalLabel">Add New Product</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
@@ -174,25 +174,25 @@ include "../components/admin/app.php";
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="product_name" name="product_name" required>
+                                <input type="text" class="form-control bg-dark text-light border-secondary" id="product_name" name="product_name" required>
                             </div>
                             <div class="mb-3">
                                 <label for="product_price" class="form-label">Price</label>
-                                <input type="number" class="form-control" id="product_price" name="product_price" step="0.01" required>
+                                <input type="number" class="form-control bg-dark text-light border-secondary" id="product_price" name="product_price" step="0.01" required>
                             </div>
                             <div class="mb-3">
                                 <label for="product_price_sell" class="form-label">Price sell</label>
-                                <input type="number" class="form-control" id="product_price_sell" name="product_price_sell" step="0.01" required>
+                                <input type="number" class="form-control bg-dark text-light border-secondary" id="product_price_sell" name="product_price_sell" step="0.01" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="product_quantity" class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="product_quantity" name="product_quantity" min="0" required>
+                                <input type="number" class="form-control bg-dark text-light border-secondary" id="product_quantity" name="product_quantity" min="0" required>
                             </div>
                             <div class="mb-3">
                                 <label for="brand_id" class="form-label">Brand</label>
-                                <select class="form-select" id="brand_id" name="brand_id" required>
+                                <select class="form-select bg-dark text-light border-secondary" id="brand_id" name="brand_id" required>
                                     <option value="">Select a brand</option>
                                     <?php
                                     $brands = getAllBrands();
@@ -204,7 +204,7 @@ include "../components/admin/app.php";
                             </div>
                             <div class="mb-3">
                                 <label for="category_id" class="form-label">Category</label>
-                                <select class="form-select" id="category_id" name="category_id" required>
+                                <select class="form-select bg-dark text-light border-secondary" id="category_id" name="category_id" required>
                                     <option value="">Select a category</option>
                                     <?php
                                     $categories = getAllCategories();
@@ -218,16 +218,16 @@ include "../components/admin/app.php";
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="product_content" class="form-label">Product Description</label>
-                                <textarea class="form-control" id="product_content" name="product_content" rows="4"></textarea>
+                                <textarea class="form-control bg-dark text-light border-secondary" id="product_content" name="product_content" rows="4"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="product_image" class="form-label">Product Image</label>
-                                <input type="file" class="form-control" id="product_image" name="product_image" required>
+                                <input type="file" class="form-control bg-dark text-light border-secondary" id="product_image" name="product_image" required>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-footer border-secondary">
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
                         <button type="submit" name="add_product" class="btn btn-primary">Add Product</button>
                     </div>
                 </form>
@@ -239,10 +239,10 @@ include "../components/admin/app.php";
 <!-- Update Product Modal -->
 <div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="updateProductModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 90%; width: 90%;">
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
                 <h5 class="modal-title" id="updateProductModalLabel">Update Product</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
@@ -252,25 +252,25 @@ include "../components/admin/app.php";
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="update_product_name" class="form-label">Product Name</label>
-                                <input type="text" class="form-control" id="update_product_name" name="product_name" required>
+                                <input type="text" class="form-control bg-dark text-light border-secondary" id="update_product_name" name="product_name" required>
                             </div>
                             <div class="mb-3">
                                 <label for="update_product_price" class="form-label">Price</label>
-                                <input type="number" class="form-control" id="update_product_price" name="product_price" step="0.01" required>
+                                <input type="number" class="form-control bg-dark text-light border-secondary" id="update_product_price" name="product_price" step="0.01" required>
                             </div>
                             <div class="mb-3">
                                 <label for="update_product_price_sell" class="form-label">Price sell</label>
-                                <input type="number" class="form-control" id="update_product_price_sell" name="product_price_sell" step="0.01" required>
+                                <input type="number" class="form-control bg-dark text-light border-secondary" id="update_product_price_sell" name="product_price_sell" step="0.01" required>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="update_product_quantity" class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="update_product_quantity" name="product_quantity" min="0" required>
+                                <input type="number" class="form-control bg-dark text-light border-secondary" id="update_product_quantity" name="product_quantity" min="0" required>
                             </div>
                             <div class="mb-3">
                                 <label for="update_brand_id" class="form-label">Brand</label>
-                                <select class="form-select" id="update_brand_id" name="update_brand_id" required>
+                                <select class="form-select bg-dark text-light border-secondary" id="update_brand_id" name="update_brand_id" required>
                                     <option value="">Select a brand</option>
                                     <?php
                                     foreach ($brands as $brand) {
@@ -281,7 +281,7 @@ include "../components/admin/app.php";
                             </div>
                             <div class="mb-3">
                                 <label for="update_category_id" class="form-label">Category</label>
-                                <select class="form-select" id="update_category_id" name="update_category_id" required>
+                                <select class="form-select bg-dark text-light border-secondary" id="update_category_id" name="update_category_id" required>
                                     <option value="">Select a category</option>
                                     <?php
                                     foreach ($categories as $category) {
@@ -294,18 +294,18 @@ include "../components/admin/app.php";
                         <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="update_product_content" class="form-label">Product Description</label>
-                                <textarea class="form-control" id="update_product_content" name="product_content" rows="4"></textarea>
+                                <textarea class="form-control bg-dark text-light border-secondary" id="update_product_content" name="product_content" rows="4"></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="update_product_image" class="form-label">Product Image</label>
-                                <input type="file" class="form-control" id="update_product_image" name="update_product_image">
+                                <input type="file" class="form-control bg-dark text-light border-secondary" id="update_product_image" name="update_product_image">
                                 <small class="form-text text-muted">Leave empty to keep current image</small>
                                 <div id="current_image_preview" class="mt-2"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <div class="modal-footer border-secondary">
+                        <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
                         <button type="submit" name="update_product" class="btn btn-primary">Update Product</button>
                     </div>
                 </form>

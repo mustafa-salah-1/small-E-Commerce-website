@@ -23,7 +23,7 @@ include "../components/admin/app.php";
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 bg-light sidebar">
+        <div class="col-md-2 p-1 sidebar">
             <?php include "../components/admin/sidebar.php"; ?>
         </div>
 
@@ -55,7 +55,7 @@ include "../components/admin/app.php";
                 <!-- Customer Details View -->
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card mb-4">
+                        <div class="card mb-4 bg-dark text-white">
                             <div class="card-header">
                                 <h4>Personal Information</h4>
                             </div>
@@ -71,7 +71,7 @@ include "../components/admin/app.php";
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card mb-4">
+                        <div class="card mb-4 bg-dark text-white">
                             <div class="card-header">
                                 <h4>Account Statistics</h4>
                             </div>
@@ -83,14 +83,14 @@ include "../components/admin/app.php";
                 </div>
 
                 <!-- Customer Orders -->
-                <div class="card">
+                <div class="card bg-dark text-white mb-4">
                     <div class="card-header">
                         <h4>Order History</h4>
                     </div>
                     <div class="card-body">
                         <?php if (count($customer_orders) > 0): ?>
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-dark table-striped">
                                     <thead>
                                         <tr>
                                             <th>Order ID</th>

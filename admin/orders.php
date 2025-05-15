@@ -19,7 +19,7 @@ include "../components/admin/app.php";
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 bg-light sidebar">
+        <div class="col-md-2 p-1 sidebar">
             <?php include "../components/admin/sidebar.php"; ?>
         </div>
 
@@ -41,7 +41,7 @@ include "../components/admin/app.php";
             </div>
 
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th>Invoice ID</th>
