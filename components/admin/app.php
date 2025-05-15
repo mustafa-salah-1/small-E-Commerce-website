@@ -8,6 +8,9 @@
   <link rel="icon" href="../public/img/logo.png" type="image/png">
   <!-- font -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <!-- map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <!-- icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- bootstrap -->
@@ -17,6 +20,12 @@
   <style>
     table td {
       vertical-align: middle;
+    }
+
+    body {
+      background-color: #0e0f11;
+      color: #d4f1c5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
   </style>
 
