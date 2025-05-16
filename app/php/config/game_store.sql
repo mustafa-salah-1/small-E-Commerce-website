@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2025 at 03:15 PM
+-- Generation Time: May 16, 2025 at 01:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,7 +39,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `admin_name`, `admin_password`, `created_at`) VALUES
-(1, 'admin', 'admin', '2025-05-10');
+(1, 'admin', '$2y$10$.VsJVY6lFvFkyr7O70sNqO/aA0y5fKzdXPSQ8rpZ/yt6Wr6rj1xMS', '2025-05-10');
 
 -- --------------------------------------------------------
 
@@ -56,6 +56,10 @@ CREATE TABLE `brands` (
 --
 -- Dumping data for table `brands`
 --
+
+INSERT INTO `brands` (`id`, `brand_name`, `brand_image`) VALUES
+(1, 'Logitech', '1747210571_brand-logitech-svgrepo-com (1).svg'),
+(4, 'Red Dragon', '1747212135_5dQBVyQuIbUUmCug6lRgSlusiuK7Stm3m0ik5m6J.svg');
 
 -- --------------------------------------------------------
 
@@ -86,6 +90,11 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
+INSERT INTO `categories` (`id`, `category_name`, `category_image`) VALUES
+(1, 'Controller', '1747210674_controller-svgrepo-com.svg'),
+(3, 'Mouse', '1747211881_mouse-alt-5-svgrepo-com.svg'),
+(4, 'Keybaord', '1747314100_keyboard-svgrepo-com.svg');
+
 -- --------------------------------------------------------
 
 --
@@ -105,6 +114,10 @@ CREATE TABLE `customers` (
 --
 -- Dumping data for table `customers`
 --
+
+INSERT INTO `customers` (`id`, `customer_name`, `customer_email`, `customer_phone`, `customer_password`, `customer_image`, `created_at`) VALUES
+(1, 'test', 'test@gmail.com', '07511233445', 'test@gmail.com', 'avatar.png', '2025-05-12'),
+(3, 'Mustafa', 'mustafaslah167@gmail.com', '07051759162', '$2y$10$.VsJVY6lFvFkyr7O70sNqO/aA0y5fKzdXPSQ8rpZ/yt6Wr6rj1xMS', 'default.png', '2025-05-15');
 
 -- --------------------------------------------------------
 
@@ -127,6 +140,10 @@ CREATE TABLE `invoices` (
 -- Dumping data for table `invoices`
 --
 
+INSERT INTO `invoices` (`id`, `customer_id`, `location`, `quantity`, `delivery_price`, `total_price`, `status`, `created_at`) VALUES
+(4, 3, '36.16322504592537,44.054989479789185', 2, 5000, 57000, 'active', '2025-05-15'),
+(5, 3, '36.16769354288779,44.033479554530274', 6, 5000, 214000, 'completed', '2025-05-15'),
+(6, 3, '36.24309500058213,44.08328219305128', 2, 5000, 14000, 'completed', '2025-05-15');
 
 -- --------------------------------------------------------
 
@@ -146,6 +163,13 @@ CREATE TABLE `invoice_products` (
 --
 -- Dumping data for table `invoice_products`
 --
+
+INSERT INTO `invoice_products` (`id`, `invoice_id`, `product_id`, `quantity`, `price`, `created_at`) VALUES
+(5, 4, 16, 1, 7000, '2025-05-15'),
+(6, 4, 17, 1, 50000, '2025-05-15'),
+(7, 5, 16, 2, 7000, '2025-05-15'),
+(8, 5, 17, 4, 50000, '2025-05-15'),
+(9, 6, 16, 2, 7000, '2025-05-15');
 
 -- --------------------------------------------------------
 
@@ -170,6 +194,11 @@ CREATE TABLE `products` (
 --
 -- Dumping data for table `products`
 --
+
+INSERT INTO `products` (`id`, `product_name`, `product_quantity`, `product_content`, `product_price`, `product_price_sell`, `product_image`, `brand_id`, `category_id`, `product_new`, `created_at`) VALUES
+(16, 'Amela Wong', 2, 'Rem at qui assumenda', 2000, 7000, '1747245530_3.jpg', 1, 1, 'true', '2025-05-14'),
+(17, 'Logitech G502 HERO', 8, 'Ducimus autem velit', 35000, 50000, '1747245601_26.jpg', 1, 3, 'true', '2025-05-14'),
+(18, 'Camilla Lucas', 212, 'Ex et adipisci nemo', 572, 759, '1747313977_14.jpg', 4, 4, 'true', '2025-05-15');
 
 -- --------------------------------------------------------
 
@@ -256,55 +285,55 @@ ALTER TABLE `product_images`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `invoice_products`
 --
 ALTER TABLE `invoice_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `product_images`
 --
 ALTER TABLE `product_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
