@@ -3,3 +3,91 @@ body {
   color: #d4f1c5;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.card {
+  background-color: #161a1d;
+  border: 1px solid #00ff88;
+  color: #d4f1c5;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  height: 100%;
+}
+
+.card .card-body {
+  display: flex;
+  flex-direction: column; 
+}
+
+.col img { 
+  height: 250px;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px #00ff88;
+}
+
+footer {
+  background-color: #1b1f23;
+  padding: 20px;
+  text-align: center;
+  color: #00ff88;
+  margin-top: 50px;
+}
+
+.price {
+  color: #00ff88;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 21px;
+  padding: 3px 8px;
+  border: 1px solid #00ff88;
+  border-radius: 3px;
+  text-shadow: 0 0 3px rgba(0, 255, 136, 0.3);
+  background-color: rgba(0, 255, 136, 0.05);
+  margin-left: auto;
+  /* This pushes it to the right */
+}
+
+.social-icons {
+  font-size: 1.5rem;
+}
+
+.social-icon {
+  color: #ffffff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88;
+  transform: translateY(-3px);
+}
+
+.form-control,.form-select {
+  background-color: #101314;
+  border: 1px solid #00ff88;
+  color: #00ff88;
+}
+
+.form-control::placeholder {
+  color: #88ffaa;
+}
+
+.form-control:focus {
+  background-color: #101314;
+  border-color: #00ff88;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+} 
+
+.btn-success {
+  background-color: #00ff88;
+  color: #000;
+}
+
+.btn-success:hover {
+  background-color: #00e676;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+}
+
+

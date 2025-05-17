@@ -4,23 +4,6 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-
-
-.form-control {
-  background-color: #101314;
-  border: 1px solid #00ff88;
-  color: #00ff88;
-}
-
-.form-control::placeholder {
-  color: #88ffaa;
-}
-
-.form-control:focus {
-  border-color: #00ff88;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
-} 
-
 .card {
   background-color: #161a1d;
   border: 1px solid #00ff88;
@@ -51,27 +34,6 @@ footer {
   margin-top: 50px;
 }
 
-.btn-primary {
-  background-color: #00ff88;
-  border-color: #00ff88;
-  color: #000;
-}
-
-.btn-primary:hover {
-  background-color: #00e676;
-}
-
-.hero {
-  background: url('https://images.unsplash.com/photo-1606312619349-05b9d7b4c7c3') no-repeat center center/cover;
-  padding: 100px 20px;
-  color: white;
-  text-shadow: 2px 2px #000;
-}
-
-.form-control:focus {
-  border-color: #00ff88;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-}
 
 .section-heading {
   border-bottom: 2px solid #00ff88;
@@ -106,7 +68,7 @@ footer {
 }
 
 .social-icon {
-  color: #d4f1c5;
+  color: #ffffff;
   transition: all 0.3s ease;
   text-decoration: none;
 }
@@ -116,28 +78,3 @@ footer {
   text-shadow: 0 0 10px #00ff88;
   transform: translateY(-3px);
 }
-
-
-.btn-outline-light{
-  color: #00ff88;
-  border-color: #00ff88;
-}                                                 /* search*/
-.btn-outline-light:hover {
-  background-color: #00ff88;
-  color: #000;
-
-}
-
-see-all-btn.btn-outline-light {
-  color: #00ff88;
-  border-color: #00ff88;
-}
-
-.see-all-btn.btn-outline-light:hover {
-  background-color: #00ff88;                          /*see all*/
-  color: #000;
-}
-.see-all-btn i {
-  margin-left: 5px;
-}
- 

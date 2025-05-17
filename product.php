@@ -60,7 +60,7 @@ if ($brand_id || $category_id || !empty($search_term)) {
                     <input type="text" class="form-control" id="search" name="search" placeholder="Search products..." value="<?php echo htmlspecialchars($search_term); ?>">
                 </div>
                 <div class="col-md-2 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary w-100 d-flex align-items-center justify-content-center gap-2">
+                    <button type="submit" class="btn btn-success w-100 d-flex align-items-center justify-content-center gap-2">
                         <i class="fas fa-search"></i> Filter
                     </button>
                 </div>
