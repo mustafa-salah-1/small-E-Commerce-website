@@ -68,10 +68,7 @@ if (!$product) {
                     <button type="submit" name="submit" class="btn-add-to-cart">
                         <i class="bi bi-cart3"></i> ADD TO CART
                     </button>
-                </form>
-                <button class="btn-wishlist">
-                    <i class="bi bi-heart"></i>
-                </button>
+                </form> 
             </div>
 
             <!-- Delivery Info -->

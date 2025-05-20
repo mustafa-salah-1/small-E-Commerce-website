@@ -73,27 +73,7 @@ if ($brand_id || $category_id || !empty($search_term)) {
 <div class="container mt-4">
     <div class="row">
         <div class="col-12">
-            <h2 class="text-light">Our Products</h2>
-            <?php if (!empty($search_term) || $brand_id || $category_id): ?>
-                <p class="text-light">
-                    Showing results for
-                    <?php
-                    $filter_parts = [];
-                    if (!empty($search_term)) $filter_parts[] = "search: \"" . htmlspecialchars($search_term) . "\"";
-                    if ($brand_id) {
-                        foreach ($brands as $brand) {
-                            if ($brand['id'] == $brand_id) $filter_parts[] = "brand: " . $brand['brand_name'];
-                        }
-                    }
-                    if ($category_id) {
-                        foreach ($categories as $category) {
-                            if ($category['id'] == $category_id) $filter_parts[] = "category: " . $category['category_name'];
-                        }
-                    }
-                    echo implode(", ", $filter_parts);
-                    ?>
-                </p>
-            <?php endif; ?>
+            <h2 class="text-light">Our Products</h2> 
         </div>
     </div>
 

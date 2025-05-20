@@ -41,8 +41,7 @@ include "../components/admin/app.php";
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Password</th>
-                            <th>Date</th>
+                             <th>Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -52,8 +51,7 @@ include "../components/admin/app.php";
                                 <td><?php echo $customer['id']; ?></td>
                                 <td><?php echo $customer['customer_name']; ?></td>
                                 <td><?php echo $customer['customer_email']; ?></td>
-                                <td><?php echo $customer['customer_password'] ?? 'N/A'; ?></td>
-                                <td><?php echo date('Y-m-d', strtotime($customer['created_at'])); ?></td>
+                                 <td><?php echo date('Y-m-d', strtotime($customer['created_at'])); ?></td>
                                 <td>
                                     <a href="customer_details.php?id=<?php echo $customer['id']; ?>" class="btn btn-info btn-sm">View Details</a>
                                 </td>

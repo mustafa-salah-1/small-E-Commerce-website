@@ -7,13 +7,8 @@ include "../app/php/admin/invoice_product/functions.php";
 
 if (isset($_POST['delete'])) {
     $id = $_POST['id'];
-    $delete = deleteInvoiceProduct($id);
-    if ($delete) {
-        $_SESSION['success'] = "Product deleted successfully.";
-    } else {
-        $_SESSION['error'] = "Failed to delete product.";
-    }
-}
+      deleteInvoiceProduct($id); 
+}       
 
 
 $currentYear = date('Y');

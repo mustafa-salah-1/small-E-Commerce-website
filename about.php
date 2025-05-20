@@ -56,7 +56,5 @@ include "components/app.php"; ?>
     </div>
   </div>
 </section>
-
-
-
+ 
 <?php include 'components/footer.php'; ?> 

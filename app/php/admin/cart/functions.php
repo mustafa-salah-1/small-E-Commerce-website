@@ -108,6 +108,7 @@ function emptyCartByCustomer($customerId)
         return false;
     }
 }
+
 function getCartSummaryByCustomer($customerId)
 {
     global $connect;

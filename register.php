@@ -6,12 +6,11 @@ $file_css = "account.css";
 include "app/php/config/config.php";
 include "components/app.php";
 
-if(isset($_SESSION["loggedinCustomer"]) && $_SESSION["loggedinCustomer"] === true){
-    header("location: index.php");
-    exit;
+if (isset($_SESSION["loggedinCustomer"]) && $_SESSION["loggedinCustomer"] === true) {
+  header("location: index.php");
+  exit;
 }
-
-
+ 
 $username = $password = $confirm_password = $email = "";
 $username_err = $password_err = $confirm_password_err = $email_err = "";
 
@@ -19,9 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
 
   if (empty(trim($_POST["username"]))) {
     $username_err = "Please enter a username.";
-  } elseif (!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))) {
-    $username_err = "Username can only contain letters, numbers, and underscores.";
-  } else {
+  }  else {
     $username = trim($_POST["username"]);
   }
 
@@ -38,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
       $param_email = trim($_POST["email"]);
 
       if ($stmt->execute()) {
-        if ($stmt->rowCount() == 1) {
+        if ($stmt->rowCount() >= 1) {
           $email_err = "This email is already taken.";
         } else {
           $email = trim($_POST["email"]);
@@ -46,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
       } else {
         echo "Oops! Something went wrong. Please try again later.";
       }
-
     }
   }
 
@@ -68,10 +64,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
     }
   }
 
-  if (empty($username_err) && empty($password_err) && empty($confirm_password_err)
-  && empty($email_err)) {
+  if (empty($username_err) && empty($password_err) 
+  && empty($confirm_password_err) && empty($email_err)) {
 
-    $sql = "INSERT INTO customers (customer_name, customer_password, customer_email, customer_image) VALUES (:username, :password, :email, :image)";
+    $sql = "INSERT INTO 
+    customers (customer_name, customer_password, customer_email, customer_image) 
+    VALUES (:username, :password, :email, :image)";
 
     if ($stmt = $connect->prepare($sql)) {
       $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
@@ -81,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
 
       // Set parameters
       $param_username = $username;
-      $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
+      $param_password = password_hash($password, PASSWORD_DEFAULT); 
       $param_email = $email;
       $param_image = "default.png";
 
@@ -100,8 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
 
   // Close connection
   unset($connect);
-}
-
+} 
 ?>
 
 <div class="container mt-5">
@@ -133,4 +130,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
 
 </body>
 
- </html>
+</html>

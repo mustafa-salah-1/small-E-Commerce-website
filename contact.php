@@ -1,6 +1,6 @@
 <?php
 
-$title_page = "About Us";
+$title_page = "Contact Us";
 $file_css = "contact.css";
 
 include "app/php/config/config.php";

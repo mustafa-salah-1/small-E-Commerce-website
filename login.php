@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               $_SESSION["loggedinCustomer"] = true;
               $_SESSION["customer_id"] = $id;
               $_SESSION["customer_email"] = $email;
-              $_SESSION["customer_name"] = $row["customer_name"];
+              $_SESSION["customer_name"] = $row["customer_name"]; 
 
               header("location: index.php");
             } else {

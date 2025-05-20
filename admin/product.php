@@ -71,9 +71,7 @@ $products = getAllProducts();
 
 $title_page = "Products";
 include "../components/admin/app.php";
-
-
-
+ 
 ?>
 
 <div class="container-fluid">
@@ -160,6 +158,7 @@ include "../components/admin/app.php";
         </main>
     </div>
 </div>
+
 <!-- Add Product Modal -->
 <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="max-width: 90%; width: 90%;">

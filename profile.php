@@ -14,7 +14,7 @@ $customer = getCustomerById($_SESSION['customer_id']);
 if (!$customer) {
   echo "<h1>Customer not found</h1>";
   exit();
-}
+} 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $customer_name = $_POST['customer_name'];
