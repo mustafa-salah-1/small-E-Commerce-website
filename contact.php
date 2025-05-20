@@ -105,6 +105,4 @@ include "components/app.php"; ?>
     });
 </script>
 
-</body>
-
- </html>
+<?php include 'components/footer.php'; ?> 

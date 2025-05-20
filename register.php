@@ -108,21 +108,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])) {
     </div>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
       <div class="mb-3">
-        <input type="text" class="form-control form-control-lg" placeholder="USERNAME" name="username" required>
+      <input type="text" class="form-control form-control-lg <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" placeholder="USERNAME" name="username" value="<?php echo $username; ?>" required>
+      <?php if (!empty($username_err)): ?>
+        <div class="invalid-feedback"><?php echo $username_err; ?></div>
+      <?php endif; ?>
       </div>
       <div class="mb-3">
-        <input type="email" class="form-control form-control-lg" placeholder="EMAIL" name="email" required>
+      <input type="email" class="form-control form-control-lg <?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" placeholder="EMAIL" name="email" value="<?php echo $email; ?>" required>
+      <?php if (!empty($email_err)): ?>
+        <div class="invalid-feedback"><?php echo $email_err; ?></div>
+      <?php endif; ?>
       </div>
 
       <div class="mb-3">
-        <input type="password" class="form-control form-control-lg" placeholder="PASSWORD" name="password" required>
+      <input type="password" class="form-control form-control-lg <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" placeholder="PASSWORD" name="password" required>
+      <?php if (!empty($password_err)): ?>
+        <div class="invalid-feedback"><?php echo $password_err; ?></div>
+      <?php endif; ?>
       </div>
       <div class="mb-3">
-        <input type="password" class="form-control form-control-lg" placeholder="CONFIRM PASSWORD" name="confirm_password" required>
+      <input type="password" class="form-control form-control-lg <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" placeholder="CONFIRM PASSWORD" name="confirm_password" required>
+      <?php if (!empty($confirm_password_err)): ?>
+        <div class="invalid-feedback"><?php echo $confirm_password_err; ?></div>
+      <?php endif; ?>
       </div>
       <button type="submit" name="register" class="btn btn-signup">SIGN UP</button>
       <div class="signup-footer mt-3">
-        <a href="login.php"> ← Already have an account? Login</a>
+      <a href="login.php"> ← Already have an account? Login</a>
       </div>
     </form>
   </div>
