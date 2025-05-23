@@ -85,24 +85,20 @@ include "components/app.php"; ?>
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        
+  const lat = 36.1611;
+  const lng = 44.0090;
 
-        const lat = 36.1611;
-        const lng = 44.0090;
+  if (lat && lng) {
+    const map = L.map('map').setView([lat, lng], 12);
 
-        if (lat && lng) {
-            const map = L.map('map').setView([lat, lng], 12);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
-
-            L.marker([lat, lng]).addTo(map)
-                .bindPopup('<?php echo htmlspecialchars('Game Store') ?>')
-                .openPopup();
-        }
-    });
+    L.marker([lat, lng]).addTo(map)
+      .bindPopup('Game Store')
+      .openPopup();
+  }
 </script>
 
-<?php include 'components/footer.php'; ?> 
+<?php include 'components/footer.php'; ?>

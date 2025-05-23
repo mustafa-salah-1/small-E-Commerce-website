@@ -8,7 +8,7 @@ include "components/app.php";
 
 if (isset($_SESSION["loggedinCustomer"]) && $_SESSION["loggedinCustomer"] === true) {
   header("location: index.php");
-  exit;
+  exit; 
 }
  
 $username = $password = $confirm_password = $email = "";
